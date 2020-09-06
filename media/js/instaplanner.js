@@ -261,9 +261,12 @@
 
 
 			console.log(instaplaner_photos.length % 3);
-			for (var i = 0; i < ( 6 - instaplaner_photos.length % 3 ); i++)
+			if( instaplaner_photos.length > 0 )
 			{
-				addPhoto();
+				for (var i = 0; i < ( 6 - instaplaner_photos.length % 3 ); i++)
+				{
+					addPhoto();
+				}
 			}
 		});
 
