@@ -1,0 +1,837 @@
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	html {
+		height: 100%;
+		width: 100%;
+		margin: 0;
+	}
+
+	body, button, input, textarea {
+		color: #262626;
+		color: rgba(var(--i1d,38,38,38),1);
+		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+		font-size: 14px;
+		line-height: 18px;
+	}
+
+	body, main, footer {
+		background-color: #fafafa;
+		background-color: rgba(var(--b3f,250,250,250),1);
+	}
+
+	body {
+		position: relative;
+		margin: 0;
+		min-height: 100%;
+		width: 100%;
+		text-rendering: optimizeLegibility;
+	}
+
+	body.page-home,
+	body.page-login,
+	body.page-install {
+		overflow-y: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.instaplanner-home,
+	.instaplanner-login,
+	.instaplanner-install {
+		width: 100%;
+	}
+
+	.header__logo {
+		width: 120px;
+		max-width: 100%;
+	}
+
+	.header__title {
+		display: inline;
+		font-weight: 600;
+		font-size: 1rem;
+	}
+
+	.instaplanner-installer {
+		margin-top: 20vh;
+	}
+
+	.instaplaner__navigation {
+		background-color: #fff;
+		background-color: rgba(var(--d87,255,255,255),1);
+		border-bottom: 1px solid #dbdbdb;
+		border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+		transition: height .2s ease-in-out;
+	}
+
+	.instaplaner__navigation__logo img {
+		max-width: 110px;
+		width: 100%;
+	}
+
+	/*.instaplaner__navigation {
+		z-index: 3;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		-ms-flex-align: center;
+		align-items: center;
+		background-color: #fff;
+		background-color: rgba(var(--d87,255,255,255),1);
+		border-bottom: 1px solid #dbdbdb;
+		border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+		transition: height .2s ease-in-out;
+	}
+
+	.instaplaner__navigation .col-12 {
+		display: flex;
+		align-items: center;
+	}
+
+	.instaplaner__navigation ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	
+
+	.instaplaner__navigation input {
+		font-size: 16px;
+		background: #fafafa;
+		background: rgba(var(--b3f,250,250,250),1);
+		border: solid 1px #dbdbdb;
+		border: solid 1px rgba(var(--b6a,219,219,219),1);
+		border-radius: 3px;
+		color: #262626;
+		color: rgba(var(--i1d,38,38,38),1);
+		outline: 0;
+		padding: 3px 10px 3px 26px;
+		z-index: 2;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		height: 100%;
+		width: 100%;
+	}
+
+	.instaplaner__navigation svg {
+		height: 22px;
+		width: 22px;
+	}*/
+
+
+	.instaplaner__profile {
+		margin-top: 35px;
+		margin-bottom: 35px;
+	}
+
+	.instaplaner__profile__header {
+		display: flex;
+		justify-content: center;
+	}
+
+	.instaplaner__profile__header--container{
+		height: 150px;
+		max-width: 150px;
+		width: 100%;
+		background-color: #fafafa;
+		background-color: rgba(var(--b3f,250,250,250),1);
+		border-radius: 50%;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		display: block;
+		-webkit-box-flex: 0;
+		-webkit-flex: 0 0 auto;
+		-ms-flex: 0 0 auto;
+		flex: 0 0 auto;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.instaplaner__profile__header--image {
+		width: 100%;
+		height: 100%;
+		max-width: 150px;
+	}
+
+	.instaplaner__profile__description--title {
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: row;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-webkit-flex-shrink: 1;
+		-ms-flex-negative: 1;
+		flex-shrink: 1;
+		min-width: 0;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+	}
+
+	.instaplaner__profile__description--title .dropdown-toggle {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		color: #262626;
+		color: rgba(var(--i1d,38,38,38),1);
+		font-weight: 300;
+		font-size: 28px;
+		line-height: 32px;
+		padding: 0;
+		margin: 0;
+	}
+
+	.instaplaner__profile__description--title .dropdown-toggle:after {
+		display: none;
+	}
+
+	.instaplaner__profile__description--href {
+		display: block;
+		font-weight: 600;
+		text-decoration: none;
+		text-align: center;
+		text-transform: inherit;
+		text-overflow: ellipsis;
+		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+		font-size: 14px;
+		cursor: pointer;
+		background-color: transparent;
+		border: 1px solid #dbdbdb;
+		border: 1px solid rgba(var(--ca6,219,219,219),1);
+		color: #262626;
+		color: rgba(var(--f75,38,38,38),1);
+		width: 100%;
+		margin-left: 15px;
+		height: 25px;
+		max-width: 100px;
+		border-radius: 4px;
+		line-height: 23px;
+	}
+
+	.instaplaner__profile__description--href:hover {
+		text-decoration: none;
+	}
+
+	.instaplaner__profile ul {
+		margin-top: 25px;
+	}
+
+	.instaplaner__profile li {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font: inherit;
+		vertical-align: baseline;
+		font-size: 16px;
+		margin-right: 40px;
+	}
+
+	.instaplaner__profile li > strong {
+		color: #262626;
+		color: rgba(var(--i1d,38,38,38),1);
+		font-weight: 600;
+	}
+
+	.instaplaner__profile h1 {
+		font-weight: 600;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		color: #262626;
+		color: rgba(var(--i1d,38,38,38),1);
+		font-size: 1.17em;
+	}
+
+	.instaplaner__profile p {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 16px;
+		line-height: 24px;
+	}
+
+	.instaplaner__profile--link {
+		display: block;
+		margin-top: 2px;
+		font-weight: 600;
+		text-decoration: none;
+		color: #00376b;
+		color: rgba(var(--fe0,0,55,107),1);
+		font-size: 16px;
+	}
+
+	.instaplaner__profile--link:hover {
+		text-decoration: none;
+		color: #00376b;
+		color: rgba(var(--fe0,0,55,107),1);
+	}
+
+	.instaplaner__profile--followers {
+		margin-top: 15px;
+		color: #8e8e8e;
+		color: rgba(var(--f52,142,142,142),1);
+		display: block;
+		font-size: 12px;
+		line-height: 14px;
+		font-weight: 600;
+	}
+
+	.instaplaner__profile--followers a {
+		color: #262626;
+		color: rgba(var(--i1d,38,38,38),1);
+		font-weight: 500;
+	}
+
+	.instaplaner__profile--followers a {
+		text-decoration: none;
+		color: #262626;
+		color: rgba(var(--i1d,38,38,38),1);
+	}
+
+	.instaplaner__toast--container {
+		z-index: 3000;
+		position: fixed;
+		max-width: 100%;
+		width: 400px;
+		padding: 10px;
+		bottom: 0;
+		right: 0;
+	}
+
+	.instaplaner__main {
+
+	}
+
+	.instaplaner__main__nav {
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		-ms-flex-align: center;
+		align-items: center;
+		border-top: 1px solid #dbdbdb;
+		border-top: 1px solid rgba(var(--b38,219,219,219),1);
+		color: #8e8e8e;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: row;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		font-size: 12px;
+		font-weight: 600;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		letter-spacing: 1px;
+		text-align: center;
+	}
+
+	.instaplaner__main__nav a {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		-ms-flex-align: center;
+		align-items: center;
+		height: 52px;
+		-webkit-transition: all 0.6s ease-in-out;
+		-moz-transition: all 0.6s ease-in-out;
+		-o-transition: all 0.6s ease-in-out;
+		transition: all 0.6s ease-in-out;
+		border-top: 1px solid transparent;
+		margin-top: -1px;
+	}
+
+	.instaplaner__main__nav a:hover {
+		text-decoration: none;
+	}
+
+	.instaplaner__main__nav a:hover > span {
+		color: rgb(38, 38, 38);
+	}
+
+	.instaplaner__main__nav a:hover > svg {
+		fill: rgb(38, 38, 38);
+	}
+
+	.instaplaner__main__nav a.active {
+		border-top: 1px solid #262626;
+		border-top: 1px solid rgba(var(--i1d,38,38,38),1);
+	}
+
+	.instaplaner__main__nav a:not(:last-child) {
+		margin-right: 60px;
+	}
+
+	.instaplaner__main__nav a > svg {
+		fill: rgb(142, 142, 142);
+		height: 12;
+		width: 12;
+	}
+
+	.instaplaner__main__nav a.active > svg {
+		fill: rgb(38, 38, 38);
+	}
+
+	.instaplaner__main__nav a > span {
+		color: rgb(142, 142, 142);
+		margin-left: 6px;
+		text-transform: uppercase;
+	}
+
+	.instaplaner__main__nav a.active > span {
+		color: rgb(38, 38, 38);
+	}
+
+	.instaplaner__addphoto .modal-content,
+	.instaplaner__editphoto .modal-content,
+	.instaplaner__addaccount .modal-content {
+		border: 0 !important;
+	}
+
+	.instaplaner__addphoto .modal-dialog,
+	.instaplaner__editphoto .modal-dialog,
+	.instaplaner__addaccount .modal-dialog {
+		min-height: calc(100vh - 60px);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		overflow: auto;
+	}
+	@media(max-width: 768px) {
+		.instaplaner__addphoto .modal-dialog,
+		.instaplaner__editphoto .modal-dialog,
+		.instaplaner__addaccount .modal-dialog {
+			min-height: calc(100vh - 20px);
+		}
+	}
+
+	.instaplaner__addphoto .btn-group-vertical > .btn,
+	.instaplaner__editphoto .btn-group-vertical > .btn,
+	.instaplaner__addaccount .btn-group-vertical > .btn {
+		border: 0;
+		border-top: 1px solid #dbdbdb;
+		border-top: 1px solid rgba(var(--b6a,219,219,219),1);
+	}
+
+	.instaplaner__addphoto .btn-group-vertical > .btn > span,
+	.instaplaner__editphoto .btn-group-vertical > .btn > span,
+	.instaplaner__addaccount .btn-group-vertical > .btn > span {
+		color: #ed4956;
+		color: rgba(var(--i30,237,73,86),1);
+	}
+
+	.instaplaner__addphoto .btn-group-vertical > .btn:not(:last-child),
+	.instaplaner__editphoto .btn-group-vertical > .btn:not(:last-child),
+	.instaplaner__addaccount .btn-group-vertical > .btn:not(:last-child) {
+		border-radius: 0 !important;
+	}
+
+	.instaplaner__editphoto img {
+		max-height: 300px;
+		object-fit: cover;
+	}
+
+	.instaplaner__loader {
+		margin-top: 25px;
+		margin-bottom: 25px;
+	}
+
+	.instaplaner__loader .spinner-border {
+		color: #dbdbdb;
+	}
+
+	.instaplaner__posts--post {
+		position: relative;
+	}
+
+	.instaplaner__posts__square {
+		position: relative;
+		width: 100%;
+		background-size: cover;
+		background-position: center;
+		background-color: rgba(0,0,0,.05);
+	}
+
+	.instaplaner__posts__square:after {
+		content: "";
+		display: block;
+		padding-bottom: 100%;
+	}
+
+	.instaplaner__posts--drag {
+		display: none;
+		position: absolute;
+		justify-content: flex-start;
+		align-items: flex-end;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+		-webkit-transition: all 0.6s ease-in-out;
+		-moz-transition: all 0.6s ease-in-out;
+		-o-transition: all 0.6s ease-in-out;
+		transition: all 0.6s ease-in-out;
+		cursor: -webkit-grab;
+		cursor: -moz-grab;
+		cursor: -o-grab;
+		cursor: move;
+		cursor: grab;
+	}
+
+	.instaplaner__posts--description {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		justify-content: flex-start;
+		align-items: flex-end;
+		cursor: pointer;
+	}
+
+	.instaplaner__posts--description p {
+		color: #fff;
+		font-weight: 600;
+		display: block;
+		margin: 0;
+		padding: 10px;
+		width: 100%;
+		text-align: left;
+		background-image: linear-gradient(transparent, rgba(0,0,0,.9));
+	}
+
+	.instaplaner__posts--drag:active {
+		cursor: -webkit-grabbing;
+		cursor: -moz-grabbing;
+		cursor: -o-grabbing;
+		cursor: grabbing;
+	}
+
+	.instaplaner__posts--drag__icon {
+		margin: 10px;
+		height: 30px;
+		width: 30px;
+		background-repeat: no-repeat;
+		background-position: center;
+		color: #fff;
+		background-image: url('data:image/svg+xml;utf8,<svg width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-grip-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10zM.146 8.354a.5.5 0 0 1 0-.708l2-2a.5.5 0 1 1 .708.708L1.707 7.5H5.5a.5.5 0 0 1 0 1H1.707l1.147 1.146a.5.5 0 0 1-.708.708l-2-2zM10 8a.5.5 0 0 1 .5-.5h3.793l-1.147-1.146a.5.5 0 0 1 .708-.708l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L14.293 8.5H10.5A.5.5 0 0 1 10 8z"/></svg>');
+	}
+
+	.instaplaner__post {
+		margin-bottom: 30px;
+	}
+
+	.instaplaner__post--dragger:hover .instaplaner__posts--drag {
+		display: flex;
+	}
+
+	.instaplaner__post--preview:hover .instaplaner__posts--description {
+		display: flex;
+	}
+
+	@media( max-width: 991px )
+	{
+		.instaplaner__post {
+			padding: 2px;
+			margin-bottom: 0;
+		}
+	}
+
+	.instaplaner__footer {
+		position: absolute;
+		width: 100%;
+		margin-top: auto;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	.instaplaner__footer--clone {
+		min-height: 35px;
+		width: 100%;
+	}
+
+	.instaplaner__navigation--clone {
+		min-height: 60px;
+		width: 100%;
+	}
+
+	.instaplaner__footer__copyright, .instaplaner__footer__links a {
+		text-transform: uppercase;
+		text-align: right;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		vertical-align: baseline;
+		font: inherit;
+		font-weight: 500;
+		font-size: 0.7rem;
+	}
+
+	.instaplaner__footer__copyright {
+		color: #8e8e8e;
+		color: rgba(var(--f52,142,142,142),1);
+	}
+
+	.input-group-addon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: .5rem .75rem;
+		margin-bottom: 0;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.25;
+		color: #495057;
+		text-align: center;
+		background-color: #e9ecef;
+		border: 1px solid rgba(0,0,0,.15);
+		border-radius: .25rem;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+
+	.input-group-addon > a {
+		display: flex;
+		color: #495057;
+	}
+
+	.instaplanner-home__logo,
+	.instaplanner-login__logo,
+	.instaplanner-install__logo {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 40px;
+	}
+
+	.instaplanner-home__logo > img,
+	.instaplanner-login__logo > img,
+	.instaplanner-install__logo > img {
+		width: 100%;
+		max-width: 140px;
+	}
+
+	.instaplanner-home__footer,
+	.instaplanner-login__footer,
+	.instaplanner-install__footer {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		margin: 0;
+		padding: 10px;
+		width: 100%;
+		color: #aaa;
+		font-size: 10px;
+		font-weight: 200;
+	}
+
+	.instaplanner-home__card,
+	.instaplanner-login__card {
+
+	}
+
+	.instaplanner-home__card h1,
+	.instaplanner-login__card h1,
+	.instaplanner-install__card h1 {
+		font-size: 20px;
+		font-weight: 700;
+	}
+
+	.instaplanner-home__card .card,
+	.instaplanner-login__card .card,
+	.instaplanner-install__card .card {
+		min-width: 100%;
+		border: none !important;
+	}
+
+	.instaplanner-home__card a,
+	.instaplanner-login__card a,
+	.instaplanner-install__card a,
+	.instaplanner-home__card button,
+	.instaplanner-login__card button,
+	.instaplanner-install__card button {
+		border-radius: 0 !important;
+		border-bottom-right-radius: .25rem !important;
+		border-bottom-left-radius: .25rem !important;
+	}
+
+	.instaplanner-splash_background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.instaplanner-splash_background img {
+		z-index: -1;
+		position: fixed;
+		width: 100%;
+		min-height: 100%;
+		filter: brightness(50%);
+		object-fit: cover;
+	}
+
+	.instaplaner__addaccount--preview {
+		display: none;
+	}
+
+	.instaplaner__addaccount--preview > div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.instaplaner__addaccount--preview img {
+		display: block;
+		max-width: 100px;
+		width: 100%;
+		border-radius: 50px;
+	}
+
+	.instaplaner__addaccount--preview div > div:not(:last-child)
+	{
+		width: 100px;
+		margin-right: 30px;
+	}
+
+	.instaplaner__addaccount--description,
+	.instaplaner__addaccount--preview p {
+		white-space: pre-line;
+	}
+
+	.instaplaner__addaccount--preview h3 {
+		text-transform: lowercase;
+		font-size: 1rem;
+		font-weight: 600;
+		margin: 0;
+		padding: 0;
+	}
+
+	.instaplaner__addaccount--preview h4 {
+		font-size: 1.4rem;
+		font-weight: 600;
+		margin: 0;
+		margin-bottom: 5px;
+		padding: 0;
+	}
+
+	.instaplanner__dashboard_new {
+		z-index: 20;
+		position: fixed;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 100%;
+		width: 100%;
+		background: #fafafa; 
+	}
+
+	.instaplanner__dashboard_new > div {
+		width: 100%;
+	}
+
+	.instaplanner__settings_profile--block {
+		border-bottom: 1px solid rgba(0,0,0,.05);
+		margin-bottom: 15px;
+		padding-bottom: 15px;
+	}
+
+	.instaplanner__settings_profile--block img {
+		display: block;
+		max-width: 60px;
+		border-radius: 30px;
+	}
+
+	.instaplanner__settings_profile--block h4 {
+		text-transform: lowercase;
+		font-size: 1rem;
+		font-weight: 600;
+		margin: 0;
+		padding: 0;
+	}
+
+	.instaplanner__settings_profile--block h3 {
+		text-transform: lowercase;
+		font-size: 1.2rem;
+		margin: 0;
+		padding: 0;
+	}
+
+	.btn-ig {
+		background: #f09433; 
+		background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #bc1888 75%, #bc1888 100%); 
+		background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#bc1888 75%,#bc1888 100%); 
+		background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#bc1888 75%,#bc1888 100%); 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+		border: 0;
+		background-size: 100% 100%;
+		transition: background-size .4s ease-in;
+		-moz-transition: background-size .4s ease-in;
+		-web-kit-transition: background-size .4s ease-in;
+		color: #fff;
+	}
+
+	.btn-ig:active,
+	.btn-ig:focus {
+		box-shadow: 0 0 0 0.2rem rgba(230, 104, 60, .2);
+	}
+
+	.btn-ig:hover {
+		color: #fff;
+		border: 0;
+		background-size: 200% 200%;
+	}
+
+	.form-ig:active,
+	.form-ig:focus {
+		box-shadow: 0 0 0 0.2rem rgba(230, 104, 60, .2);
+		border-color: #bc1888;
+	}
+
+	.github {
+		display: flex;
+		color: #fff;
+		justify-content: center;
+		align-items: center;
+		font-weight: 200;
+		font-size: 15px;
+	}
+
+	.github svg {
+		margin-right: 10px;
+	}
+
+	.github p {
+		margin: 0;
+	}

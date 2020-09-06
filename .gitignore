@@ -1,0 +1,8 @@
+#Ignore files
+.htaccess
+app/config.php
+*.psd
+
+#Ignored folders
+media/img/posts/*
+media/img/profile/*
