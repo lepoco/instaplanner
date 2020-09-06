@@ -92,7 +92,7 @@
 
 				case 'account':
 					$this->SwapAccount( $this->InstaPlanner->Path->GetLevel( 2 ) );
-					$this->InstaPlanner->LoadModel( 'dashboard', 'Schedule your Instagram posts' );
+					$this->RedirectTo( );
 					break;
 
 				case 'settings':
@@ -168,7 +168,7 @@
 				$this->InstaPlanner->User->CurrentID()
 			);
 
-			$this->InstaPlanner->User->UpadeField('user_selected_account', $id);
+			//$this->InstaPlanner->User->UpadeField('user_selected_account', $id);
 		}
 	}
 ?>
