@@ -276,8 +276,9 @@
 				"('version', '" . INSTAPLANNER_VERSION . "'), " .
 				"('site_name', 'InstaPlanner'),  " .
 				"('site_description', 'Schedule your Instagram posts'),  " .
-				"('media_library', 'media/img/posts/'),  " .
-				"('profile_library', 'media/img/profile/'),  " .
+				"('media_library', 'media/img/'),  " .
+				"('posts_library', 'media/img/posts/'),  " .
+				"('profile_library', 'media/img/avatars/'),  " .
 				"('dashboard', 'dashboard'),  " .
 				"('login', 'login'),  " .
 				"('timezone', 'UTC'), " .
@@ -301,12 +302,12 @@
 				$query->execute();
 			}
 
-			/*if($query = $database->prepare("INSERT IGNORE INTO rdev_options (option_name, option_value) VALUES ('ssl', ?)"))
+			if($query = $database->prepare("INSERT IGNORE INTO rdev_options (option_name, option_value) VALUES ('ssl', ?)"))
 			{
-				$ssl = $this->InstaPlanner->Path->ssl ? 'true' : 'false';
+				$ssl = $this->Master->Path->ssl ? 'true' : 'false';
 				$query->bind_param('s', $ssl);
 				$query->execute();
-			}*/
+			}
 
 			if($query = $database->prepare("INSERT IGNORE INTO rdev_users (user_name, user_display_name, user_password, user_token, user_role, user_status) VALUES (?, ?, ?, ?, ?, ?)"))
 			{
@@ -327,7 +328,7 @@
 				$query->execute();
 			}
 
-			$this->InstaPlanner->User->LogIn(array('user_id' => 1, 'user_role' => 'admin'));
+			$this->Master->User->LogIn(array('user_id' => 1, 'user_role' => 'admin'));
 
 			$database->close();
 		}

@@ -51,9 +51,7 @@
 		</footer>
 		<div class="instaplaner__footer--clone"></div>
 <?php endif; ?>
-<?php foreach ($this->scripts as $script): ?>
-		<script type="text/javascript" src="<?php echo $script[0] . (isset($script[2]) ? '?ver=' . $script[2] : '') ?>" integrity="<?php echo $script[1]; ?>" crossorigin="anonymous"></script>
-<?php endforeach ?>
+<?php $this->PrintScripts(); ?>
 <?php if( method_exists( $this, 'Footer' ) ) { $this->Footer(); } ?>
 	</body>
 </html>

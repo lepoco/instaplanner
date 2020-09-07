@@ -202,14 +202,14 @@
 			if ( is_file( ABSPATH . "app/models/rdev-$name.php" ) )
 			{
 				require_once ABSPATH . "app/models/rdev-$name.php";
-				( new Model( $this, $name, $displayname ) )->Print();
+				( new Model( $this, $name, $displayname, INSTAPLANNER_VERSION ) )->Print();
 			}
 			else
 			{
 				if( is_file( ABSPATH . "app/themes/pages/rdev-$name.php" ) )
 				{
 					//Display the page without additional logic
-					( new Models( $this, $name, $displayname ) )->Print();
+					( new Models( $this, $name, $displayname, INSTAPLANNER_VERSION ) )->Print();
 				}
 				else
 				{

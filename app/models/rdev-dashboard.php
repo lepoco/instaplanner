@@ -74,7 +74,7 @@
 				avatar: 'https://rdev.lan/dev/instaplaner/media/img/profile/avatar.jpg'
 			};
 			*/
-			$media_library = $this->Master->Options->Get( 'media_library', 'media/img/posts/' );
+			$media_library = $this->Master->Options->Get( 'posts_library', 'media/img/posts/' );
 			
 			$query = $this->Master->Database->query( "SELECT * FROM rdev_accounts WHERE id = 1" )->fetchArray();
 			$order = json_decode( $this->CurrentAccount( 'post_order' ), true );

@@ -373,6 +373,8 @@
 				cache: false,
 				success: function(e)
 				{
+					console.log(e);
+					
 					if( jsonParse(e) )
 					{
 						let new_post = JSON.parse(e);

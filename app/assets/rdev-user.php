@@ -67,7 +67,7 @@
 			$token = Crypter::Encrypt( Crypter::DeepSalter(30), 'token' );
 
 			if( $this->Master->Database == null )
-				$this->Master->Database = new Database();
+				$this->Master->Database = new Database( INSTAPLANNER_DB_HOST, INSTAPLANNER_DB_NAME, INSTAPLANNER_DB_USER, INSTAPLANNER_DB_PASS );
 
 			$query = $this->Master->Database->query(
 				"UPDATE rdev_users SET user_token = ?, user_last_login = ? WHERE user_id = ?",

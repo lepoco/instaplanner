@@ -251,7 +251,7 @@
 		* @access   public
 		* @return   bool true/false
 		*/
-		public function close() : bool
+		public function Close() : bool
 		{
 			return $this->connection->close();
 		}

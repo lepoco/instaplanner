@@ -101,6 +101,40 @@
 		}
 
 		/**
+		* ForceFilePutContents
+		* Nonce validation
+		*
+		* @access   private
+		* @return	bool
+		*/
+		function ForceFilePutContents( string $filepath, $data )
+		{
+			try
+			{
+				$isInFolder = preg_match("/^(.*)\/([^\/]+)$/", $filepath, $filepathMatches );
+
+				if( $isInFolder )
+				{
+					$folderName = $filepathMatches[1];
+					$fileName = $filepathMatches[2];
+					
+					if ( !is_dir( $folderName ) )
+					{
+						mkdir( $folderName, 0777, true );
+					}
+				}
+
+				file_put_contents( $filepath, $data );
+
+				return true;
+			}
+			catch( Exception $e )
+			{
+				return false;
+			}
+		}
+
+		/**
 		* ValidNonce
 		* Nonce validation
 		*
@@ -246,12 +280,15 @@
 
 			$filename = strtolower( Crypter::BaseSalter(30) ) . $extension;
 
-			$media_library = $this->Master->Options->Get( 'media_library', 'media/img/posts/' );
+			$media_library = $this->Master->Options->Get( 'posts_library', 'media/img/posts/' );
 
 			while ( is_file( ABSPATH . $media_library . $filename ) )
 			{
 				$filename = strtolower( Crypter::BaseSalter(30) ) . $extension;
 			}
+
+			if ( !is_dir( ABSPATH . $media_library ) )
+				mkdir( ABSPATH . $media_library, 0777, true );
 
 			if( move_uploaded_file( $_FILES['input-file']['tmp_name'], ABSPATH . $media_library . $filename ) )
 			{
@@ -308,15 +345,15 @@
 				$this->Finish( self::ERROR_MISSING_ARGUMENTS );
 
 			$filename = strtolower( Crypter::BaseSalter(30) ) . '.jpeg';
-			$media_library = $this->Master->Options->Get( 'profile_library', 'media/img/profile/' );
+			$media_library = $this->Master->Options->Get( 'profile_library', 'media/img/avatars/' );
 
 			while ( is_file( ABSPATH . $media_library . $filename ) )
 			{
 				$filename = strtolower( Crypter::BaseSalter(30) ) . '.jpeg';
 			}
 
-			if( !file_put_contents( ABSPATH . $media_library . $filename, fopen( $_POST[ 'avatar' ], 'r' ) ) )
-			{ 
+			if( !$this->ForceFilePutContents( ABSPATH . $media_library . $filename, fopen( $_POST[ 'avatar' ], 'r' ) ) )
+			{
 				$this->Finish( self::ERROR_SAVING_FILE );
 			}
 
@@ -361,7 +398,7 @@
 			if( empty( $post_data ) )
 				$this->Finish( self::ERROR_ENTRY_DONT_EXISTS );
 
-			if ( !unlink( ABSPATH . $this->Master->Options->Get( 'media_library', 'media/img/posts/' ) . $post_data['image'] ) )
+			if ( !unlink( ABSPATH . $this->Master->Options->Get( 'posts_library', 'media/img/posts/' ) . $post_data['image'] ) )
 				$this->Finish( self::ERROR_DELETING_FILE );
 
 			$query = $this->Master->Database->query(

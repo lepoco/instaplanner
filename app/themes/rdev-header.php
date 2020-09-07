@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
 	<head lang="en" role="contentinfo" dir="ltr" xmlns:og="http://ogp.me/ns#" xmlns:fb="//www.facebook.com/2008/fbml" itemscope="" itemtype="http://schema.org/WebPage" class="" role="banner" user-nonce="<?php echo $this->body_nonce; ?>">
+<?php $this->PrintPrefetch(); ?>
 		<title><?php echo $this->Title(); ?></title>
 		<meta charset="utf-8">
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -32,12 +33,7 @@
 		<meta name="msapplication-TileImage" content="<?php echo $this->GetImage('instaplaner-fav-256.png') ?>" />
 		<meta name="description" content="Forward is a link shortener created by RapidDev." />
 		<link rel="canonical" href="<?php echo $this->baseurl; ?>" />
-<?php foreach ($this->prefetch as $dns): ?>
-		<link rel="dns-prefetch" href="<?php echo $dns; ?>" />
-<?php endforeach ?>
-<?php foreach ($this->styles as $style): ?>
-		<link type="text/css" rel="stylesheet" href="<?php echo $style[0] . (isset($style[2]) ? '?ver=' . $style[2] : ''); ?>" integrity="<?php echo $style[1]; ?>" crossorigin="anonymous" />
-<?php endforeach ?>
+<?php $this->PrintStyles(); ?>
 		<meta name="twitter:card" content="summary">
 		<meta property="og:title" content="InstaPlaner - Schedule your Instagram posts">
 		<meta property="og:site_name" content="InstaPlaner" />
