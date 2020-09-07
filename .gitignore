@@ -6,3 +6,4 @@ app/config.php
 #Ignored folders
 media/img/posts/*
 media/img/profile/*
+media/img/avatars/*
