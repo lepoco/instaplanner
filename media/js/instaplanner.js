@@ -361,6 +361,7 @@
 						let new_post = JSON.parse(e);
 						addPhoto(new_post[0], page_data.baseurl + page_data.media + new_post[1], jQuery('#input-description').val(), true, !jQuery('#instaplaner_nav_reorder').hasClass('active') );
 
+						jQuery('#input-file').val('');
 						jQuery('#instaplaner__addphoto').modal('hide');
 						jQuery('#input-description').val('');
 					}
