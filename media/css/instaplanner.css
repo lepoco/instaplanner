@@ -692,6 +692,7 @@
 
 	.instaplanner-splash_background img {
 		z-index: -1;
+		bottom: 0;
 		position: fixed;
 		width: 100%;
 		min-height: 100%;

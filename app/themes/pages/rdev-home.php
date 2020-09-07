@@ -31,7 +31,7 @@
 								<div class="card">
 									<div class="card-body">
 										<h1>InstaPlanner | <?php echo $this->Description(); ?></h1>
-										<p>Schedule posts for your Instagram profile with InstaPlanner. You can add, save and organize photos. You can also easily write descriptions to them.</p>
+										<p>Schedule posts for your Instagram profile with InstaPlanner. You can add, save and organize photos.</p>
 									</div>
 									<a href="https://github.com/rapiddev/InstaPlanner" target="_blank" rel="noopener" class="btn btn-ig">
 										<div class="github">

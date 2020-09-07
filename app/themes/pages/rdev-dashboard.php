@@ -9,22 +9,9 @@
  */
 
 	$this->GetHeader();
-
-	$accounts = $this->GetAccounts();
 	$dashboard = $this->baseurl . $this->InstaPlanner->Options->Get( 'dashboard', 'dashboard' ) . '/';
-
-	$current_account = array();
-	$current_user = $this->InstaPlanner->User->Active();
-	foreach ($accounts as $account)
-	{
-		if( $account['id'] == $current_user['user_selected_account'] )
-		{
-			$current_account = $account;
-			break;
-		}
-	}
 ?>
-<?php if( empty( $accounts ) ): ?>
+<?php if( empty( $this->GetAccounts() ) ): ?>
 		<div class="instaplanner__dashboard_new"/>
 			<div>
 				<div class="container">
@@ -53,7 +40,7 @@
 					<div class="col-4 col-lg-4">
 						<div class="instaplaner__profile__header">
 							<div class="instaplaner__profile__header--container">
-								<img class="instaplaner__profile__header--image" src="<?php echo $this->baseurl . $this->InstaPlanner->Options->Get( 'profile_library', 'media/img/profile/' ) . $current_account['avatar']; ?>" alt="Insta Planer profile picture">
+								<img class="instaplaner__profile__header--image" src="<?php echo $this->baseurl . $this->InstaPlanner->Options->Get( 'profile_library', 'media/img/profile/' ) . $this->CurrentAccount('avatar'); ?>" alt="Insta Planer profile picture">
 							</div>
 						</div>
 					</div>
@@ -62,14 +49,14 @@
 							<div class="instaplaner__profile__description--title">
 								<div class="dropdown">
 									<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<?php echo strtolower( $current_account['name'] ); ?>
+										<?php echo strtolower( $this->CurrentAccount('name') ); ?>
 										<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 											<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
 										</svg>
 									</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<?php foreach ($accounts as $account) {
-											echo '<a class="dropdown-item" href="' . $dashboard . 'account/' . $account['id'] . '">' . strtolower( $account['name'] ) . '</a>';
+										<?php foreach ( $this->GetAccounts() as $account ) {
+											echo ($this->CurrentAccount('id') != $account['id'] ? '<a class="dropdown-item" href="' . $dashboard . 'account/' . $account['id'] . '">' . strtolower( $account['name'] ) . '</a>' : '');
 										} ?>
 									</div>
 								</div>
@@ -83,16 +70,16 @@
 								<strong><?php echo $this->CurrentAccount('posts'); ?></strong> posts
 							</li>
 							<li class="list-inline-item">
-								<strong><?php echo $current_account['followers']; ?></strong> followers
+								<strong><?php echo $this->CurrentAccount('followers'); ?></strong> followers
 							</li>
 							<li class="list-inline-item">
-								<strong><?php echo $current_account['following']; ?></strong> following
+								<strong><?php echo $this->CurrentAccount('following'); ?></strong> following
 							</li>
 						</ul>
 
-						<h1><?php echo $current_account['full_name']; ?></h1>
+						<h1><?php echo $this->CurrentAccount('full_name'); ?></h1>
 						<p>
-							<?php echo $current_account['description']; ?>
+							<?php echo $this->CurrentAccount('description'); ?>
 						</p>
 						<a target="_blank" rel="noopener" href="<?php echo $this->CurrentAccount('website'); ?>" class="instaplaner__profile--link"><?php echo str_replace(array('https://', 'http://', 'www.'), array('','',''), $this->CurrentAccount('website')); ?></a>
 						<div class="instaplaner__profile--followers">

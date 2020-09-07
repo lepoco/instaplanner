@@ -92,7 +92,7 @@
 
 				case 'account':
 					$this->SwapAccount( $this->InstaPlanner->Path->GetLevel( 2 ) );
-					$this->RedirectTo( );
+					$this->RedirectTo();
 					break;
 
 				case 'settings':
