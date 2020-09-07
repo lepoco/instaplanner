@@ -9,6 +9,10 @@
  */
 	
 	namespace InstaPlanner;
+
+	/** Verify PHP version */
+	if ( version_compare( $ver = PHP_VERSION, $req = '7.0.11', '<' ) )
+		exit( sprintf( 'You are running PHP %s, but InstaPlanner needs at least <strong>PHP %s</strong> to run.', $ver, $req ) );
 	
 	/** Instaplaner version */
 	define( 'INSTAPLANNER_VERSION', '1.0.0' );
