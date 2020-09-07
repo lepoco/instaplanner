@@ -8,12 +8,6 @@
 	console.log( page_data );
 
 	/**
-	* Array.prototype.forEach
-	* Lets use foreach
-	*/
-	Array.prototype.forEach||(Array.prototype.forEach=function(r){let t=this.length;if("function"!=typeof r)throw new TypeError;for(let o=arguments[1],h=0;h<t;h++)h in this&&r.call(o,this[h],h,this)});
-
-	/**
 	* escapeHtml
 	* Credit: https://stackoverflow.com/a/4835406
 	*/
