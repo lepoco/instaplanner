@@ -193,6 +193,7 @@
 					</div>
 					<div class="btn-group-vertical">
 						<button type="button" class="instaplaner__editphoto--update btn btn-outline-dark">Update</button>
+						<a href="#" download="#" type="button" class="instaplaner__editphoto--download btn btn-outline-dark">Download photo</a>
 						<button type="button" class="instaplaner__editphoto--delete btn btn-outline-dark"><span>Delete</span></button>
 						<button type="button" class="instaplaner__editphoto--cancel btn btn-outline-dark" data-dismiss="modal"><span>Cancel</span></button>
 					</div>

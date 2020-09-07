@@ -66,7 +66,11 @@
 									<img src="<?php echo $this->baseurl . $avatars_library . $account['avatar']; ?>" class="mr-3" alt="...">
 									<div class="media-body">
 										<h4><?php echo $account['full_name']; ?> | <i><?php echo $account['name']; ?></i></h4>
-										<p><?php echo $account['description']; ?></p>
+										<p>
+											<?php echo $account['description']; ?>
+											<br>
+											<a target="_blank" rel="noopener" href="https://instagram.com/<?php echo $account['name']; ?>">https://instagram.com/<?php echo $account['name']; ?></a>
+										</p>
 										<strong>Followers: </strong> <?php echo $account['followers']; ?> <strong>Following: </strong> <?php echo $account['following']; ?> <strong>Posts: </strong> <?php echo $account['posts']; ?>
 									</div>
 								</div>

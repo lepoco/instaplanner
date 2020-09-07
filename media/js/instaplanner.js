@@ -263,7 +263,12 @@
 			console.log(instaplaner_photos.length % 3);
 			if( instaplaner_photos.length > 0 )
 			{
-				for (var i = 0; i < ( 6 - instaplaner_photos.length % 3 ); i++)
+				let blank_posts = ( 6 - instaplaner_photos.length % 3 );
+
+				if( blank_posts == 6 )
+					blank_posts = 3;
+
+				for (var i = 0; i < blank_posts; i++)
 				{
 					addPhoto();
 				}
@@ -315,6 +320,10 @@
 			{
 				jQuery('#instaplaner__editphoto').modal('show');
 
+				let re = /(?:\.([^.]+))?$/;
+				let ext = '.' + re.exec(post_data['image'])[1]
+				jQuery('.instaplaner__editphoto--download').attr('download', 'instaplanner-' + post_data['id']  + ext);
+				jQuery('.instaplaner__editphoto--download').attr('href', post_data['image']);
 				jQuery('.instaplaner__editphoto--delete__confirm, .instaplaner__editphoto--update').attr('data-id', post_data['id']);
 				jQuery('#instaplaner__editphoto img').attr('src', post_data['image']);
 				jQuery('#input-current-description').val(post_data['description']);
