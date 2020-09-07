@@ -9,7 +9,7 @@
  */
 
 	$this->GetHeader();
-	$dashboard = $this->baseurl . $this->InstaPlanner->Options->Get( 'dashboard', 'dashboard' ) . '/';
+	$dashboard = $this->baseurl . $this->Master->Options->Get( 'dashboard', 'dashboard' ) . '/';
 ?>
 <?php if( empty( $this->GetAccounts() ) ): ?>
 		<div class="instaplanner__dashboard_new"/>
@@ -40,7 +40,7 @@
 					<div class="col-12 col-lg-4">
 						<div class="instaplaner__profile__header">
 							<div class="instaplaner__profile__header--container">
-								<img class="instaplaner__profile__header--image" src="<?php echo $this->baseurl . $this->InstaPlanner->Options->Get( 'profile_library', 'media/img/profile/' ) . $this->CurrentAccount('avatar'); ?>" alt="Insta Planer profile picture">
+								<img class="instaplaner__profile__header--image" src="<?php echo $this->baseurl . $this->Master->Options->Get( 'profile_library', 'media/img/profile/' ) . $this->CurrentAccount('avatar'); ?>" alt="Insta Planer profile picture">
 							</div>
 						</div>
 					</div>

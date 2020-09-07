@@ -301,12 +301,12 @@
 				$query->execute();
 			}
 
-			if($query = $database->prepare("INSERT IGNORE INTO rdev_options (option_name, option_value) VALUES ('ssl', ?)"))
+			/*if($query = $database->prepare("INSERT IGNORE INTO rdev_options (option_name, option_value) VALUES ('ssl', ?)"))
 			{
 				$ssl = $this->InstaPlanner->Path->ssl ? 'true' : 'false';
 				$query->bind_param('s', $ssl);
 				$query->execute();
-			}
+			}*/
 
 			if($query = $database->prepare("INSERT IGNORE INTO rdev_users (user_name, user_display_name, user_password, user_token, user_role, user_status) VALUES (?, ?, ?, ?, ?, ?)"))
 			{

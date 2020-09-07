@@ -19,12 +19,12 @@
 	class Dashboard
 	{
 		/**
-		 * InstaPlanner class instance
+		 * Master class instance
 		 *
-		 * @var InstaPlanner
+		 * @var Master
 		 * @access private
 		 */
-		private $InstaPlanner;
+		private $Master;
 
 		/**
 		 * Current dashboard page
@@ -55,18 +55,18 @@
 		*
 		* @access   public
 		*/
-		public function __construct( InstaPlanner &$parent )
+		public function __construct( Object &$parent )
 		{
-			$this->InstaPlanner = $parent;
+			$this->Master = $parent;
 
 			$this->SetPage();
 			$this->IfExists();
 
 
-			if( !$this->InstaPlanner->User->IsLoggedIn() )
+			if( !$this->Master->User->IsLoggedIn() )
 			{
 				if( $this->subpage != 'login' && $this->subpage != 'ajax' )
-					$this->RedirectTo( $this->InstaPlanner->Options->Get( 'login', 'login' ) );
+					$this->RedirectTo( $this->Master->Options->Get( 'login', 'login' ) );
 			}
 			else
 			{
@@ -74,47 +74,47 @@
 					$this->RedirectTo();
 			}
 
-			if( trim( $this->InstaPlanner->Path->GetLevel( 2 ) ) != '' && $this->subpage != 'account' )
+			if( trim( $this->Master->Path->GetLevel( 2 ) ) != '' && $this->subpage != 'account' )
 			{
-				$this->InstaPlanner->LoadModel( '404', 'Page not found' );
+				$this->Master->LoadModel( '404', 'Page not found' );
 			}
 
 			switch ($this->subpage)
 			{
 				case 'ajax':
-					new Ajax( $this->InstaPlanner );
+					new Ajax( $this->Master );
 					break;
 
 				case '__dashboard__':
 
-					$this->InstaPlanner->LoadModel( 'dashboard', 'Schedule your Instagram posts' );
+					$this->Master->LoadModel( 'dashboard', 'Schedule your Instagram posts' );
 					break;
 
 				case 'account':
-					$this->SwapAccount( $this->InstaPlanner->Path->GetLevel( 2 ) );
+					$this->SwapAccount( $this->Master->Path->GetLevel( 2 ) );
 					$this->RedirectTo();
 					break;
 
 				case 'settings':
-					$this->InstaPlanner->LoadModel( 'settings', 'Settings' );
+					$this->Master->LoadModel( 'settings', 'Settings' );
 					break;
 
 				case 'login':
-					$this->InstaPlanner->LoadModel( 'login', 'Sign in' );
+					$this->Master->LoadModel( 'login', 'Sign in' );
 					break;
 
 				case 'signout':
-					$this->InstaPlanner->User->LogOut();
-					$this->InstaPlanner->Path->Redirect( $this->InstaPlanner->Options->Get( 'base_url', $this->InstaPlanner->Path->ScriptURI() ) . '/login' );
+					$this->Master->User->LogOut();
+					$this->Master->Path->Redirect( $this->Master->Options->Get( 'base_url', $this->Master->Path->ScriptURI() ) . '/login' );
 					break;
 				
 				default:
-					$this->InstaPlanner->LoadModel( '404', 'Page not found' );
+					$this->Master->LoadModel( '404', 'Page not found' );
 					break;
 			}
 			
 			//End ajax query
-			$this->InstaPlanner->Session->Close();
+			$this->Master->Session->Close();
 			exit;
 		}
 
@@ -126,11 +126,11 @@
 		*/
 		private function RedirectTo( $slug = null ) : void
 		{
-			$this->InstaPlanner->Path->Redirect(
-				$this->InstaPlanner->Options->Get(
+			$this->Master->Path->Redirect(
+				$this->Master->Options->Get(
 					'base_url',
-					$this->InstaPlanner->Path->ScriptURI()
-				) . $this->InstaPlanner->Options->Get( 'dashboard', 'dashboard' ) . '/' . $slug
+					$this->Master->Path->ScriptURI()
+				) . $this->Master->Options->Get( 'dashboard', 'dashboard' ) . '/' . $slug
 			);
 		}
 
@@ -142,10 +142,10 @@
 		*/
 		private function SetPage() : void
 		{
-			if( $this->InstaPlanner->Path->GetLevel( 1 ) == null )
+			if( $this->Master->Path->GetLevel( 1 ) == null )
 				$this->subpage = '__dashboard__';
 			else
-				$this->subpage = $this->InstaPlanner->Path->GetLevel( 1 );
+				$this->subpage = $this->Master->Path->GetLevel( 1 );
 		}
 
 		/**
@@ -157,18 +157,18 @@
 		private function IfExists() : void
 		{	
 			if( !in_array( $this->subpage, self::$pages ) )
-				$this->InstaPlanner->LoadModel( '404', 'Page not found' );
+				$this->Master->LoadModel( '404', 'Page not found' );
 		}
 
 		private function SwapAccount( $id ) : void
 		{
-			$query = $this->InstaPlanner->Database->query(
+			$query = $this->Master->Database->query(
 				"UPDATE rdev_users SET user_selected_account = ? WHERE user_id = ?",
 				$id,
-				$this->InstaPlanner->User->CurrentID()
+				$this->Master->User->CurrentID()
 			);
 
-			//$this->InstaPlanner->User->UpadeField('user_selected_account', $id);
+			//$this->Master->User->UpadeField('user_selected_account', $id);
 		}
 	}
 ?>

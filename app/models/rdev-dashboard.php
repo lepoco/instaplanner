@@ -26,7 +26,7 @@
 		{
 			if( empty( $this->accounts ) )
 			{
-				$this->accounts = $this->InstaPlanner->Database->query( "SELECT * FROM rdev_accounts" )->fetchAll();
+				$this->accounts = $this->Master->Database->query( "SELECT * FROM rdev_accounts" )->fetchAll();
 			}
 
 			if( !empty( $this->accounts ) )
@@ -40,7 +40,7 @@
 			if( empty( $this->current_account ) )
 			{
 				$accounts = $this->GetAccounts();
-				$current_user = $this->InstaPlanner->User->Active();
+				$current_user = $this->Master->User->Active();
 				foreach ($accounts as $account)
 				{
 					if( $account['id'] == $current_user['user_selected_account'] )
@@ -74,15 +74,15 @@
 				avatar: 'https://rdev.lan/dev/instaplaner/media/img/profile/avatar.jpg'
 			};
 			*/
-			$media_library = $this->InstaPlanner->Options->Get( 'media_library', 'media/img/posts/' );
+			$media_library = $this->Master->Options->Get( 'media_library', 'media/img/posts/' );
 			
-			$query = $this->InstaPlanner->Database->query( "SELECT * FROM rdev_accounts WHERE id = 1" )->fetchArray();
+			$query = $this->Master->Database->query( "SELECT * FROM rdev_accounts WHERE id = 1" )->fetchArray();
 			$order = json_decode( $this->CurrentAccount( 'post_order' ), true );
 
 			if( $order == '' )
 				$order = array();
 
-			$query = $this->InstaPlanner->Database->query( "SELECT * FROM rdev_posts WHERE account_id = ? ORDER BY id DESC", (int)$this->CurrentAccount( 'id' ) )->fetchAll();
+			$query = $this->Master->Database->query( "SELECT * FROM rdev_posts WHERE account_id = ? ORDER BY id DESC", (int)$this->CurrentAccount( 'id' ) )->fetchAll();
 			$photos = '';
 			if( !empty( $query ) )
 			{

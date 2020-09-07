@@ -21,12 +21,12 @@
 	class User
 	{
 		/**
-		 * InstaPlanner class instance
+		 * Master class instance
 		 *
-		 * @var InstaPlanner
+		 * @var Master
 		 * @access private
 		 */
-		private $InstaPlanner;
+		private $Master;
 
 		/**
 		 * Active user id
@@ -50,9 +50,9 @@
 		*
 		* @access   public
 		*/
-		public function __construct( InstaPlanner &$parent )
+		public function __construct( Object &$parent )
 		{
-			$this->InstaPlanner = $parent;
+			$this->Master = $parent;
 		}
 
 		/**
@@ -64,12 +64,12 @@
 		*/
 		public function LogIn( array $user ) : void
 		{
-			$token = Crypter::Encrypt(Crypter::DeepSalter(30), 'token');
+			$token = Crypter::Encrypt( Crypter::DeepSalter(30), 'token' );
 
-			if( $this->InstaPlanner->Database == null )
-				$this->InstaPlanner->Database = new Database();
+			if( $this->Master->Database == null )
+				$this->Master->Database = new Database();
 
-			$query = $this->InstaPlanner->Database->query(
+			$query = $this->Master->Database->query(
 				"UPDATE rdev_users SET user_token = ?, user_last_login = ? WHERE user_id = ?",
 				$token,
 				(new DateTime())->format('Y-m-d H:i:s'),
@@ -100,14 +100,14 @@
 				if( $this->User == null )
 					$this->GetUser( $_SESSION['u'] );
 
-				$query = $this->InstaPlanner->Database->query(
+				$query = $this->Master->Database->query(
 					"UPDATE rdev_users SET user_token = ? WHERE user_id = ?",
 					'',
 					$this->User['user_id'],
 				);
 			}
 
-			$this->InstaPlanner->Session->Destroy();
+			$this->Master->Session->Destroy();
 		}
 
 		/**
@@ -155,9 +155,9 @@
 		*/
 		private function GetUser( int $id )
 		{
-			if( $this->InstaPlanner->Database != null )
+			if( $this->Master->Database != null )
 			{
-				$query = $this->InstaPlanner->Database->query( "SELECT * FROM rdev_users WHERE user_id = ?", $id )->fetchArray();
+				$query = $this->Master->Database->query( "SELECT * FROM rdev_users WHERE user_id = ?", $id )->fetchArray();
 
 				if($query != null)
 				{
@@ -199,7 +199,7 @@
 		*/
 		public function GetByName( string $username )
 		{
-			$query = $this->InstaPlanner->Database->query( "SELECT user_id, user_email, user_password, user_role, user_token FROM rdev_users WHERE user_name = ?", $username )->fetchArray();
+			$query = $this->Master->Database->query( "SELECT user_id, user_email, user_password, user_role, user_token FROM rdev_users WHERE user_name = ?", $username )->fetchArray();
 			return $query;
 		}
 
@@ -212,7 +212,7 @@
 		*/
 		public function GetByEmail( string $email )
 		{
-			$query = $this->InstaPlanner->Database->query( "SELECT user_id, user_name, user_password, user_role, user_token FROM rdev_users WHERE user_email = ?", $email )->fetchArray();
+			$query = $this->Master->Database->query( "SELECT user_id, user_name, user_password, user_role, user_token FROM rdev_users WHERE user_email = ?", $email )->fetchArray();
 			return $query;
 		}
 

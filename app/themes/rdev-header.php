@@ -46,14 +46,14 @@
 		<script type="application/ld+json" nonce="<?php echo $this->js_nonce; ?>">
 			{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"<?php echo $this->baseurl; ?>#website","url":"<?php echo $this->baseurl; ?>","name":"Forward","description":"Schedule your Instagram posts.","inLanguage":"pl-PL"},{"@type":"ImageObject","@id":"<?php echo $this->baseurl; ?>#primaryimage","inLanguage":"pl-PL","url":"<?php echo $this->GetImage('instaplaner-fav-256.png') ?>","width":256,"height":256,"caption":"Forward"},{"@type":"WebPage","@id":"<?php echo $this->baseurl; ?>#webpage","url":"<?php echo $this->baseurl; ?>","name":"Forward - Link shortener","isPartOf":{"@id":"<?php echo $this->baseurl; ?>#website"},"primaryImageOfPage":{"@id":"<?php echo $this->baseurl; ?>#primaryimage"},"datePublished":"<?php echo date(DATE_ATOM); ?>","dateModified":"<?php echo date(DATE_ATOM); ?>","description":"Schedule your Instagram posts.","inLanguage":"en","potentialAction":[{"@type":"ReadAction","target":["<?php echo $this->baseurl; ?>"]}]}]}
 		</script>
-		<script>let page_data = {pagenow: '<?php echo $this->name; ?>', baseurl: '<?php echo $this->baseurl; ?>', ajax: '<?php echo ($this->name != 'home' ? $this->AjaxGateway() : ''); ?>', media: '<?php echo $this->InstaPlanner->Options->Get( 'media_library', 'media/img/posts/' ); ?>'};</script>
+		<script>let page_data = {pagenow: '<?php echo $this->name; ?>', baseurl: '<?php echo $this->baseurl; ?>', ajax: '<?php echo ($this->name != 'home' ? $this->AjaxGateway() : ''); ?>', media: '<?php echo $this->Master->Options->Get( 'media_library', 'media/img/posts/' ); ?>'};</script>
 <?php if( method_exists( $this, 'Header' ) ) { $this->Header(); } ?>
 	</head>
 	<body class="instaplaner__body <?php echo 'page-' . $this->name; ?>">
 <?php if ( $this->name == 'dashboard' || $this->name == 'settings' ): ?>
 		<nav class="instaplaner__navigation navbar navbar-expand-lg fixed-top navbar-light">
 			<div class="container">
-				<a class="navbar-brand" href="<?php echo $this->baseurl . ($this->InstaPlanner->User->IsLoggedIn() ? $this->InstaPlanner->Options->Get( 'dashboard', 'dashboard' ) : '' ); ?>">
+				<a class="navbar-brand" href="<?php echo $this->baseurl . ($this->Master->User->IsLoggedIn() ? $this->Master->Options->Get( 'dashboard', 'dashboard' ) : '' ); ?>">
 					<div class="instaplaner__navigation__logo">
 						<img src="<?php echo $this->GetImage('instaplanner-dark.svg') ?>" alt="InstaPlaner Logo">
 					</div>

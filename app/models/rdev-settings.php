@@ -26,7 +26,7 @@
 		*/
 		protected function GetAccounts()
 		{
-			$query = $this->InstaPlanner->Database->query( "SELECT * FROM rdev_accounts" )->fetchAll();
+			$query = $this->Master->Database->query( "SELECT * FROM rdev_accounts" )->fetchAll();
 
 			if( !empty( $query ) )
 				return $query;

@@ -33,7 +33,7 @@
 										<h1>ERROR 404</h1>
 										<p>This page does not exist, you must be lost...</p>
 									</div>
-									<a href="<?php echo $this->baseurl . ($this->InstaPlanner->User->IsLoggedIn() ? $this->InstaPlanner->Options->Get( 'dashboard', 'dashboard' ) : '' ); ?>" class="btn btn-ig">
+									<a href="<?php echo $this->baseurl . ($this->Master->User->IsLoggedIn() ? $this->Master->Options->Get( 'dashboard', 'dashboard' ) : '' ); ?>" class="btn btn-ig">
 										Get me out of here!
 									</a>
 								</div>

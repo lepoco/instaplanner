@@ -36,7 +36,7 @@
 											<input type="hidden" class="form-control" id="input_scriptname" value="<?php echo dirname($_SERVER["SCRIPT_NAME"]); ?>">
 											<span>Default URL</span>
 											<div class="form-group">
-												<input type="text" class="form-control" id="input_baseuri" placeholder="<?php echo $this->InstaPlanner->Path->ScriptURI(); ?>" value="<?php echo $this->InstaPlanner->Path->ScriptURI(); ?>">
+												<input type="text" class="form-control" id="input_baseuri" placeholder="<?php echo $this->Master->Path->ScriptURI(); ?>" value="<?php echo $this->Master->Path->ScriptURI(); ?>">
 											</div>
 											<span style="display:block;width:100%;margin-top:10px;">Database</span>
 											<div class="row">

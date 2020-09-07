@@ -67,18 +67,18 @@
 		*
 		* @access public
 		*/
-		public function __construct()
+		public function __construct( string $host, string $name, string $user, string $pass = '', string $charset = 'utf8' )
 		{
 			if( defined( 'FORWARD_DEBUG' ) )
 				if( FORWARD_DEBUG )
 					$this->show_errors = true;
 
-			$this->connection = new Mysqli( INSTAPLANNER_DB_HOST, INSTAPLANNER_DB_USER, INSTAPLANNER_DB_PASS, INSTAPLANNER_DB_NAME );
+			$this->connection = new Mysqli( $host, $user, $pass, $name );
 			
 			if ( $this->connection->connect_error )
 				$this->error( 'Failed to connect to MySQL - ' . $this->connection->connect_error );
 
-			$this->connection->set_charset( 'utf8' );
+			$this->connection->set_charset( $charset );
 		}
 
 		/**

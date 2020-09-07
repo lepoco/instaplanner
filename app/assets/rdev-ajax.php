@@ -1,6 +1,6 @@
 <?php namespace InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 /**
- * @package InstaPlanner
+ * @package Master
  *
  * @author Leszek Pomianowski
  * @copyright Copyright (c) 2020, RapidDev
@@ -43,12 +43,12 @@
 		private const CODE_SUCCESS                   = 's01';
 		
 		/**
-		 * InstaPlanner class instance
+		 * Master class instance
 		 *
-		 * @var InstaPlanner
+		 * @var Master
 		 * @access private
 		 */
-		private $InstaPlanner;
+		private $Master;
 
 		/**
 		 * Current ajax action
@@ -72,9 +72,9 @@
 		*
 		* @access   public
 		*/
-		public function __construct( InstaPlanner &$parent )
+		public function __construct( Object &$parent )
 		{
-			$this->InstaPlanner = $parent;
+			$this->Master = $parent;
 
 			if( $this->IsNull() )
 				exit('Bad gateway');
@@ -157,7 +157,7 @@
 		*/
 		private function Finish( $text = null, $json = false )
 		{
-			$this->InstaPlanner->Session->Close();
+			$this->Master->Session->Close();
 
 			if( $text == null )
 				echo ERROR_UNKNOWN;
@@ -193,10 +193,10 @@
 			$login = filter_var( $_POST['login'], FILTER_SANITIZE_STRING );
 			$password = filter_var( $_POST['password'], FILTER_SANITIZE_STRING );
 
-			$user = $this->InstaPlanner->User->GetByName( $login );
+			$user = $this->Master->User->GetByName( $login );
 
 			if( empty( $user ))
-				$user = $this->InstaPlanner->User->GetByEmail( $login );
+				$user = $this->Master->User->GetByEmail( $login );
 			
 			if( empty( $user ))
 				$this->Finish( self::ERROR_ENTRY_DONT_EXISTS );
@@ -204,14 +204,14 @@
 			if( !Crypter::Compare( $password, $user['user_password'], 'password' ) )
 				$this->Finish( self::ERROR_ENTRY_DONT_EXISTS );
 
-			$this->InstaPlanner->User->LogIn( $user );
+			$this->Master->User->LogIn( $user );
 
 			$this->Finish( self::CODE_SUCCESS );
 		}
 
 		private function add_post() : void
 		{
-			if( !$this->InstaPlanner->User->IsManager() )
+			if( !$this->Master->User->IsManager() )
 				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
 
 			if( !isset(
@@ -246,7 +246,7 @@
 
 			$filename = strtolower( Crypter::BaseSalter(30) ) . $extension;
 
-			$media_library = $this->InstaPlanner->Options->Get( 'media_library', 'media/img/posts/' );
+			$media_library = $this->Master->Options->Get( 'media_library', 'media/img/posts/' );
 
 			while ( is_file( ABSPATH . $media_library . $filename ) )
 			{
@@ -255,7 +255,7 @@
 
 			if( move_uploaded_file( $_FILES['input-file']['tmp_name'], ABSPATH . $media_library . $filename ) )
 			{
-				$query = $this->InstaPlanner->Database->query(
+				$query = $this->Master->Database->query(
 					"INSERT INTO rdev_posts (account_id, image, description) VALUES (?,?,?)",
 					(int)filter_var( $_POST[ 'input-account' ], FILTER_SANITIZE_NUMBER_INT ),
 					$filename,
@@ -272,7 +272,7 @@
 
 		private function save_reorder() : void
 		{
-			if( !$this->InstaPlanner->User->IsManager() )
+			if( !$this->Master->User->IsManager() )
 				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
 
 			if( !isset(
@@ -281,7 +281,7 @@
 			) )
 				$this->Finish( self::ERROR_MISSING_ARGUMENTS );
 
-			$query = $this->InstaPlanner->Database->query(
+			$query = $this->Master->Database->query(
 				"UPDATE rdev_accounts SET post_order = ? WHERE id = ?",
 				filter_var( $_POST[ 'order' ], FILTER_SANITIZE_STRING ),
 				(int)$_POST[ 'account' ]
@@ -292,7 +292,7 @@
 
 		private function register_account() : void
 		{
-			if( !$this->InstaPlanner->User->IsManager() )
+			if( !$this->Master->User->IsManager() )
 				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
 
 			if( !isset(
@@ -308,7 +308,7 @@
 				$this->Finish( self::ERROR_MISSING_ARGUMENTS );
 
 			$filename = strtolower( Crypter::BaseSalter(30) ) . '.jpeg';
-			$media_library = $this->InstaPlanner->Options->Get( 'profile_library', 'media/img/profile/' );
+			$media_library = $this->Master->Options->Get( 'profile_library', 'media/img/profile/' );
 
 			while ( is_file( ABSPATH . $media_library . $filename ) )
 			{
@@ -320,7 +320,7 @@
 				$this->Finish( self::ERROR_SAVING_FILE );
 			}
 
-			$query = $this->InstaPlanner->Database->query(
+			$query = $this->Master->Database->query(
 				"INSERT INTO rdev_accounts (name, full_name, avatar, website, posts, followers, following, description) VALUES (?,?,?,?,?,?,?,?)",
 				filter_var( $_POST[ 'name' ], FILTER_SANITIZE_STRING ),
 				filter_var( $_POST[ 'full_name' ], FILTER_SANITIZE_STRING ),
@@ -332,10 +332,10 @@
 				filter_var( $_POST[ 'biography' ], FILTER_SANITIZE_STRING )
 			);
 
-			$query = $this->InstaPlanner->Database->query(
+			$query = $this->Master->Database->query(
 				"UPDATE rdev_users SET user_selected_account = ? WHERE user_id = ?",
 				$query->lastInsertID(),
-				$this->InstaPlanner->User->CurrentID()
+				$this->Master->User->CurrentID()
 			);
 			
 			$this->Finish( self::CODE_SUCCESS );
@@ -343,7 +343,7 @@
 
 		private function delete_post() : void
 		{
-			if( !$this->InstaPlanner->User->IsManager() )
+			if( !$this->Master->User->IsManager() )
 				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
 
 			if( !isset(
@@ -353,7 +353,7 @@
 
 			$post_id = (int)filter_var( $_POST[ 'post' ], FILTER_SANITIZE_NUMBER_INT );
 
-			$post_data = $this->InstaPlanner->Database->query(
+			$post_data = $this->Master->Database->query(
 				"SELECT image FROM rdev_posts WHERE id = ?",
 				$post_id
 			)->fetchArray();
@@ -361,10 +361,10 @@
 			if( empty( $post_data ) )
 				$this->Finish( self::ERROR_ENTRY_DONT_EXISTS );
 
-			if ( !unlink( ABSPATH . $this->InstaPlanner->Options->Get( 'media_library', 'media/img/posts/' ) . $post_data['image'] ) )
+			if ( !unlink( ABSPATH . $this->Master->Options->Get( 'media_library', 'media/img/posts/' ) . $post_data['image'] ) )
 				$this->Finish( self::ERROR_DELETING_FILE );
 
-			$query = $this->InstaPlanner->Database->query(
+			$query = $this->Master->Database->query(
 				"DELETE FROM rdev_posts WHERE id = ?",
 				$post_id
 			);
@@ -374,7 +374,7 @@
 
 		private function update_post() : void
 		{
-			if( !$this->InstaPlanner->User->IsManager() )
+			if( !$this->Master->User->IsManager() )
 				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
 
 			if( !isset(
@@ -385,7 +385,7 @@
 
 			$post_id = (int)filter_var( $_POST[ 'post' ], FILTER_SANITIZE_NUMBER_INT );
 
-			$post_data = $this->InstaPlanner->Database->query(
+			$post_data = $this->Master->Database->query(
 				"SELECT image FROM rdev_posts WHERE id = ?",
 				$post_id
 			)->fetchArray();
@@ -393,7 +393,7 @@
 			if( empty( $post_data ) )
 				$this->Finish( self::ERROR_ENTRY_DONT_EXISTS );
 
-			$query = $this->InstaPlanner->Database->query(
+			$query = $this->Master->Database->query(
 				"UPDATE rdev_posts SET description = ? WHERE id = ?",
 				filter_var( $_POST[ 'description' ], FILTER_SANITIZE_STRING ),
 				$post_id

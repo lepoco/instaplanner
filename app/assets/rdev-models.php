@@ -19,12 +19,12 @@
 	class Models
 	{
 		/**
-		 * InstaPlanner class instance
+		 * Master class instance
 		 *
-		 * @var InstaPlanner
+		 * @var Master
 		 * @access protected
 		 */
-		protected $InstaPlanner;
+		protected $Master;
 
 		/**
 		 * Basename of view
@@ -111,13 +111,13 @@
 		* Class constructor
 		*
 		* @access   public
-		* @param	InstaPlanner $parent
+		* @param	Master $Master
 		* @param	string $name
 		* @param	string $displayname
 		*/
-		public function __construct( InstaPlanner &$parent, string $name, string $displayname )
+		public function __construct( Object &$Master, string $name, string $displayname )
 		{
-			$this->InstaPlanner = $parent;
+			$this->Master = $Master;
 
 			$this->name = $name;
 			$this->displayname = $displayname;
@@ -154,7 +154,7 @@
 
 		protected function AjaxGateway()
 		{
-			return $this->baseurl . $this->InstaPlanner->Options->Get( 'dashboard', 'dashboard' ) . '/ajax';
+			return $this->baseurl . $this->Master->Options->Get( 'dashboard', 'dashboard' ) . '/ajax';
 		}
 
 		protected function AjaxNonce( $name )
@@ -175,7 +175,7 @@
 
 		protected function SetBaseUrl()
 		{
-			$this->baseurl = $this->InstaPlanner->Options->Get('base_url', $this->InstaPlanner->Path->RequestURI());
+			$this->baseurl = $this->Master->Options->Get('base_url', $this->Master->Path->RequestURI());
 		}
 		
 		protected function GetView()
@@ -186,12 +186,12 @@
 
 		protected function Title()
 		{
-			echo $this->InstaPlanner->Options->Get('site_name', 'InstaPlanner') . ($this->displayname != NULL ? ' | ' . $this->displayname : '');
+			echo $this->Master->Options->Get('site_name', 'Master') . ($this->displayname != NULL ? ' | ' . $this->displayname : '');
 		}
 
 		protected function Description()
 		{
-			return $this->InstaPlanner->Options->Get('site_description', 'Schedule your Instagram posts');
+			return $this->Master->Options->Get('site_description', 'Schedule your Instagram posts');
 		}
 
 		protected function GetHeader()
@@ -242,86 +242,14 @@
 		public function Print()
 		{
 			$this->GetView();
-			$this->InstaPlanner->Session->Close();
+			$this->Master->Session->Close();
 			//Kill script :(
 			exit;
 		}
 
-		public function GetLanguages() : array
-		{
-			$query = $this->InstaPlanner->Database->query( "SELECT * FROM InstaPlanner_statistics_languages" )->fetchAll();
-
-			if( !empty( $query ) )
-			{
-				$languages = array();
-				foreach ( $query as $lang )
-				{
-					$languages[ $lang[ 'language_id' ] ] = $lang[ 'language_name' ];
-				}
-
-				return $languages;
-			}
-
-			return array();
-		}
-
-		public function GetOrigins() : array
-		{
-			$query = $this->InstaPlanner->Database->query( "SELECT * FROM InstaPlanner_statistics_origins" )->fetchAll();
-
-			if( !empty( $query ) )
-			{
-				$origins = array();
-				foreach ( $query as $origin )
-				{
-					$origins[ $origin[ 'origin_id' ] ] = $origin[ 'origin_name' ];
-				}
-
-				return $origins;
-			}
-
-			return array();
-		}
-
-		public function GetPlatforms() : array
-		{
-			$query = $this->InstaPlanner->Database->query( "SELECT * FROM InstaPlanner_statistics_platforms" )->fetchAll();
-
-			if( !empty( $query ) )
-			{
-				$platforms = array();
-				foreach ( $query as $platform )
-				{
-					$platforms[ $platform[ 'platform_id' ] ] = $platform[ 'platform_name' ];
-				}
-
-				return $platforms;
-			}
-
-			return array();
-		}
-
-		public function GetAgents() : array
-		{
-			$query = $this->InstaPlanner->Database->query( "SELECT * FROM InstaPlanner_statistics_agents" )->fetchAll();
-
-			if( !empty( $query ) )
-			{
-				$agents = array();
-				foreach ( $query as $agent )
-				{
-					$agents[ $agent[ 'agent_id' ] ] = $agent[ 'agent_name' ];
-				}
-
-				return $agents;
-			}
-
-			return array();
-		}
-
 		public function GetUsers() : array
 		{
-			$query = $this->InstaPlanner->Database->query( "SELECT * FROM InstaPlanner_users" )->fetchAll();
+			$query = $this->Master->Database->query( "SELECT * FROM rdev_users" )->fetchAll();
 
 			if( !empty( $query ) )
 			{

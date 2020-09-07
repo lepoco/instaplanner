@@ -38,16 +38,16 @@
 							<hr>
 							<div class="form-group">
 								<label for="site_url">Main website URL</label>
-								<input type="text" class="form-control" name="site_url" id="site_url" placeholder="<?php echo $this->InstaPlanner->Options->Get('base_url'); ?>" value="<?php echo $this->InstaPlanner->Options->Get('base_url'); ?>">
+								<input type="text" class="form-control" name="site_url" id="site_url" placeholder="<?php echo $this->Master->Options->Get('base_url'); ?>" value="<?php echo $this->Master->Options->Get('base_url'); ?>">
 								<small><span class="uppercase"><strong>Attention!</strong></span><br/>Change URL only if you have moved the site to a different domain or folder. Otherwise, access to the panel may be blocked.</small>
 							</div>
 							<div class="form-group">
 								<label for="dashboard_url">Dashboard URL</label>
-								<input type="text" class="form-control" name="dashboard_url" id="dashboard_url" placeholder="<?php echo $this->InstaPlanner->Options->Get('dashboard'); ?>" value="<?php echo $this->InstaPlanner->Options->Get('dashboard'); ?>">
+								<input type="text" class="form-control" name="dashboard_url" id="dashboard_url" placeholder="<?php echo $this->Master->Options->Get('dashboard'); ?>" value="<?php echo $this->Master->Options->Get('dashboard'); ?>">
 							</div>
 							<div class="form-group">
 								<label for="input_login_url">Login URL</label>
-								<input type="text" class="form-control" name="input_login_url" id="input_login_url" placeholder="<?php echo $this->InstaPlanner->Options->Get('login'); ?>" value="<?php echo $this->InstaPlanner->Options->Get('login'); ?>">
+								<input type="text" class="form-control" name="input_login_url" id="input_login_url" placeholder="<?php echo $this->Master->Options->Get('login'); ?>" value="<?php echo $this->Master->Options->Get('login'); ?>">
 							</div>
 						</div>
 
@@ -59,7 +59,7 @@
 
 	$accounts = $this->GetAccounts();
 	if( !empty( $accounts ) ):
-		$avatars_library = $this->InstaPlanner->Options->Get( 'profile_library', 'media/img/profile/' );
+		$avatars_library = $this->Master->Options->Get( 'profile_library', 'media/img/profile/' );
 		foreach ($accounts as $account):
 ?>
 								<div class="media instaplanner__settings_profile--block">
@@ -99,7 +99,7 @@
 								<label for="force_dashboard_ssl">Force SSL connection for dashboard</label>
 								<select class="form-control" name="force_dashboard_ssl" id="force_dashboard_ssl">
 									<?php
-									$option = $this->InstaPlanner->Options->Get('force_dashboard_ssl');
+									$option = $this->Master->Options->Get('force_dashboard_ssl');
 									?>
 									<option value="1"<?php echo $option ? ' selected="selected"' : ""; ?>>Enabled</option>
 									<option value="2"<?php echo !$option ? ' selected="selected"' : ""; ?>>Disabled</option>

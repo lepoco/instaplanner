@@ -160,7 +160,7 @@
 		private function InitDatabase() : void
 		{
 			if( $this->IsConfig() )
-				$this->Database = new Database();
+				$this->Database = new Database( INSTAPLANNER_DB_HOST, INSTAPLANNER_DB_NAME, INSTAPLANNER_DB_USER, INSTAPLANNER_DB_PASS );
 			else
 				$this->Database = null;
 		}
