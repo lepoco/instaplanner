@@ -107,12 +107,12 @@
 		protected $body_nonce;
 
 		/**
-		 * Site address for ip location
+		 * Information for JS scripts to be displayed on the page
 		 *
-		 * @var string
+		 * @var array
 		 * @access protected
 		 */
-		protected $geoip = '';
+		protected $page_data = array();
 
 		/**
 		* __construct
@@ -150,6 +150,18 @@
 
 			$this->SetStyles();
 			$this->SetScripts();
+
+			$this->AddPageData( 'version', $this->version );
+			$this->AddPageData( 'pagenow', $this->name );
+			$this->AddPageData( 'baseurl', $this->baseurl );
+			$this->AddPageData( 'media_path', $this->Master->Options->Get( 'media_library', 'media/img/' ) );
+
+			if( $this->name != 'home' && $this->name != '404' )
+			{
+				$this->AddPageData( 'ajax', $this->AjaxGateway() );
+				$this->AddPageData( 'posts_path', $this->Master->Options->Get( 'posts_library', 'media/img/posts/' ) );
+				$this->AddPageData( 'avatars_path', $this->Master->Options->Get( 'profiles_library', 'media/img/avatars/' ) );
+			}
 
 			if( method_exists( $this, 'Init' ) )
 				$this->Init();
@@ -373,6 +385,30 @@
 			{
 				echo "\t\t" . '<script type="text/javascript" src="' . $script[0] . (isset($script[2]) ? '?ver=' . $script[2] : '') . '" integrity="' . $script[1] . '" crossorigin="anonymous"></script>' . PHP_EOL;
 			}
+		}
+
+		/**
+		* AddPageData
+		* Add new data to the page
+		*
+		* @access   protected
+		* @param    string $key
+		* @param    var $value
+		*/
+		protected function AddPageData( $key, $value )
+		{
+			$this->page_data[ $key ] = $value;
+		}
+
+		/**
+		* PrintPageData
+		* Print information for JS scripts
+		*
+		* @access   protected
+		*/
+		protected function PrintPageData()
+		{
+			echo '<script type="text/javascript" nonce="' . $this->js_nonce . '">let page_data = ' . JSParse::Parse( $this->page_data ) . ';</script>' . PHP_EOL;
 		}
 
 		/**

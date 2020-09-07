@@ -23,6 +23,8 @@
 
 	require_once ABSPATH . 'app/assets/' . 'rdev-options.php';
 
+	require_once ABSPATH . 'app/assets/' . 'rdev-jsparse.php';
+
 	require_once ABSPATH . 'app/assets/' . 'rdev-models.php';
 
 	require_once ABSPATH . 'app/assets/' . 'rdev-user.php';

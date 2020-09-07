@@ -5,6 +5,7 @@
   */
 	
 	'use strict';
+	console.log( page_data );
 
 	/**
 	* Array.prototype.forEach
@@ -174,8 +175,8 @@
 						type: 'post',
 						data: {
 							action: 'save_reorder',
-							nonce: order_nonce,
-							account: current_account,
+							nonce: page_data.order_nonce,
+							account: page_data.current_account_id,
 							order: JSON.stringify( order_list )
 						},
 						success: function(e)
@@ -254,16 +255,16 @@
 
 		jQuery('.instaplaner__loader').delay(1000).fadeOut('slow', function()
 		{
-			for (var i = 0; i < instaplaner_photos.length; i++)
+			for (var i = 0; i < page_data.posts.length; i++)
 			{
-				addPhoto(instaplaner_photos[i][0], instaplaner_photos[i][1], instaplaner_photos[i][2]);
+				addPhoto(page_data.posts[i][0], page_data.posts[i][1], page_data.posts[i][2]);
 			}
 
 
-			console.log(instaplaner_photos.length % 3);
-			if( instaplaner_photos.length > 0 )
+			console.log(page_data.posts.length % 3);
+			if( page_data.posts.length > 0 )
 			{
-				let blank_posts = ( 6 - instaplaner_photos.length % 3 );
+				let blank_posts = ( 6 - page_data.posts.length % 3 );
 
 				if( blank_posts == 6 )
 					blank_posts = 3;
@@ -378,7 +379,7 @@
 					if( jsonParse(e) )
 					{
 						let new_post = JSON.parse(e);
-						addPhoto(new_post[0], page_data.baseurl + page_data.media + new_post[1], jQuery('#input-description').val(), true, !jQuery('#instaplaner_nav_reorder').hasClass('active') );
+						addPhoto(new_post[0], page_data.baseurl + page_data.posts_path + new_post[1], jQuery('#input-description').val(), true, !jQuery('#instaplaner_nav_reorder').hasClass('active') );
 
 						jQuery('#input-file').val('');
 						jQuery('#instaplaner__addphoto').modal('hide');
@@ -402,7 +403,7 @@
 				type: 'post',
 				data: {
 					action: 'update_post',
-					nonce: update_nonce,
+					nonce: page_data.update_nonce,
 					post: id,
 					description: jQuery('#input-current-description').val()
 				},
@@ -449,7 +450,7 @@
 				type: 'post',
 				data: {
 					action: 'delete_post',
-					nonce: delete_nonce,
+					nonce: page_data.delete_nonce,
 					post: id
 				},
 				success: function(e)

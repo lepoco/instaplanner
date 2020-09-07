@@ -22,6 +22,61 @@
 		protected $accounts = array();
 		protected $current_account = array();
 
+		protected function Init()
+		{
+			$this->AddPageData( 'current_account_id', ($this->CurrentAccount( 'id' ) != '' ? $this->CurrentAccount( 'id' ) : 1) );
+			$this->AddPageData( 'order_nonce', $this->AjaxNonce( 'save_reorder' ) );
+			$this->AddPageData( 'delete_nonce', $this->AjaxNonce( 'delete_post' ) );
+			$this->AddPageData( 'update_nonce', $this->AjaxNonce( 'update_post' ) );
+
+			$this->FetchPosts();
+		}
+
+		protected function FetchPosts()
+		{
+			$media_library = $this->Master->Options->Get( 'posts_library', 'media/img/posts/' );
+			
+			$query = $this->Master->Database->query( "SELECT * FROM rdev_accounts WHERE id = 1" )->fetchArray();
+			$order = json_decode( $this->CurrentAccount( 'post_order' ), true );
+
+			if( $order == '' )
+				$order = array();
+
+			$query = $this->Master->Database->query( "SELECT * FROM rdev_posts WHERE account_id = ? ORDER BY id DESC", (int)$this->CurrentAccount( 'id' ) )->fetchAll();
+			$posts = array();
+
+			if( !empty( $query ) )
+			{
+				foreach ($query as $post)
+				{
+					if ( !in_array($post['id'], $order) )
+					{
+						array_push( $posts, array( $post['id'], $this->baseurl . $media_library . $post['image'], preg_replace("/[\n\r]/", '\n', $post[ 'description' ] ) ) );
+					}
+				}
+
+				foreach ( $order as $key)
+				{
+					if( $key == 0 )
+					{
+						array_push( $posts, array( 0, '', 'Empty photo' ) );
+					}
+					else
+					{
+						foreach ( $query as $post )
+						{
+							if( $post['id'] == $key )
+							{
+								array_push( $posts, array( $post['id'], $this->baseurl . $media_library . $post['image'], preg_replace("/[\n\r]/", '\n', $post[ 'description' ] ) ) );
+							}
+						}
+					}
+				}
+			}
+
+			$this->AddPageData( 'posts', $posts );
+		}
+
 		protected function GetAccounts()
 		{
 			if( empty( $this->accounts ) )
@@ -56,68 +111,5 @@
 			else
 				return $this->current_account[ $key ];
 			
-		}
-		/**
-		* Header
-		* Prints data in header
-		*
-		* @access   private
-		*/
-		public function Header()
-		{
-			/*	
-			let profile_data = {
-				name: 'themakatka',
-				short_description: 'Patrycja | Parisian Style',
-				site_name: 'themakatka.com',
-				site_url: 'https://themakatka.com',
-				avatar: 'https://rdev.lan/dev/instaplaner/media/img/profile/avatar.jpg'
-			};
-			*/
-			$media_library = $this->Master->Options->Get( 'posts_library', 'media/img/posts/' );
-			
-			$query = $this->Master->Database->query( "SELECT * FROM rdev_accounts WHERE id = 1" )->fetchArray();
-			$order = json_decode( $this->CurrentAccount( 'post_order' ), true );
-
-			if( $order == '' )
-				$order = array();
-
-			$query = $this->Master->Database->query( "SELECT * FROM rdev_posts WHERE account_id = ? ORDER BY id DESC", (int)$this->CurrentAccount( 'id' ) )->fetchAll();
-			$photos = '';
-			if( !empty( $query ) )
-			{
-				$c = 0;
-				foreach ($query as $post)
-				{
-					if ( !in_array($post['id'], $order) )
-					{
-						$c++;
-						$photos .= ($c > 1 ? ',' : '') . '[' . $post['id'] . ', \'' . $this->baseurl . $media_library . $post['image'] . '\', \'' . preg_replace("/[\n\r]/", '\n', $post[ 'description' ]) . '\']';
-					}
-				}
-
-				foreach ( $order as $key)
-				{
-					if( $key == 0 )
-					{
-						$c++;
-						$photos .= ($c > 1 ? ',' : '') . '[0, \'\', \'Empty photo\']';
-					}
-					else
-					{
-						foreach ( $query as $post )
-						{
-							if( $post['id'] == $key )
-							{
-								$c++;
-								$photos .= ($c > 1 ? ',' : '') . '[' . $post['id'] . ', \'' . $this->baseurl . $media_library . $post['image'] . '\', \'' . preg_replace("/[\n\r]/", '\n', $post[ 'description' ]) . '\']';
-							}
-						}
-					}
-				}
-			}
-
-
-			echo "\t\t" . '<script>let instaplaner_photos = [' . $photos . '];let profile_data = {};let order_nonce = \'' . $this->AjaxNonce( 'save_reorder' ) . '\';let current_account = ' . ($this->CurrentAccount( 'id' ) != '' ? $this->CurrentAccount( 'id' ) : 1) . ';let delete_nonce = \'' . $this->AjaxNonce( 'delete_post' ) . '\';let update_nonce = \'' . $this->AjaxNonce( 'update_post' ) . '\';</script>';
 		}
 	}
