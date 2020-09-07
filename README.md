@@ -29,6 +29,7 @@ Each Ajax query is verified by the SHA1 encrypted Nonce.
 - Bootstrap by the Bootstrap team<br/>[https://getbootstrap.com/](https://getbootstrap.com/)
 - Bootstrap Icons by the Bootstrap Authors<br/>[https://icons.getbootstrap.com/](https://icons.getbootstrap.com/)
 - jQuery by the jQuery Foundation<br/>[https://jquery.org/](https://jquery.org/)
+- zxcvbn by the an Wheeler and Dropbox, Inc.<br/>[https://github.com/dropbox/zxcvbn](https://github.com/dropbox/zxcvbn)
 - Clipboard.js by the Zeno Rocha<br/>[https://github.com/zenorocha/clipboard.js/](https://github.com/zenorocha/clipboard.js/)
 - Material Design Icons by the Google and other creators | Maintained by Austin Andrews<br/>[https://materialdesignicons.com/](https://materialdesignicons.com/)
 - Aerial View Of Eiffel Tower by the Chris Molloy<br/>[https://www.pexels.com/@chris-molloy-220084](https://www.pexels.com/@chris-molloy-220084)
