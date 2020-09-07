@@ -37,14 +37,14 @@
 		<div class="instaplaner__profile">
 			<div class="container">
 				<div class="row">
-					<div class="col-4 col-lg-4">
+					<div class="col-12 col-lg-4">
 						<div class="instaplaner__profile__header">
 							<div class="instaplaner__profile__header--container">
 								<img class="instaplaner__profile__header--image" src="<?php echo $this->baseurl . $this->InstaPlanner->Options->Get( 'profile_library', 'media/img/profile/' ) . $this->CurrentAccount('avatar'); ?>" alt="Insta Planer profile picture">
 							</div>
 						</div>
 					</div>
-					<div class="col-8 col-lg-8">
+					<div class="col-12 col-lg-8">
 						<div class="instaplaner__profile__description">
 							<div class="instaplaner__profile__description--title">
 								<div class="dropdown">
@@ -60,8 +60,9 @@
 										} ?>
 									</div>
 								</div>
-								<a class="instaplaner__profile__description--href" href="<?php echo $dashboard . 'settings' ?>">Settings</a>
-								<a class="instaplaner__profile__description--href" href="<?php echo $dashboard . 'signout' ?>">Sign Out</a>
+								<div style="display: flex;width: 100%;">
+									<a class="instaplaner__profile__description--href" href="<?php echo $dashboard . 'settings' ?>">Settings</a> <a class="instaplaner__profile__description--href" href="<?php echo $dashboard . 'signout' ?>">Sign Out</a>
+								</div>
 							</div>
 						</div>
 
