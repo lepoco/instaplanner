@@ -15,12 +15,21 @@ Free, no fees, no binding licenses and no external login required.
 ## How to install it?
 1. Simply upload files to your hosting using FTP or on your test environment. Installation will start from the root directory.
 2. You need a MySQL database in addition to the PHP server. Check how to create a new database in your hosting provider helpdesk.
-3. Enter requires data and just press "Install". It's easy :D
+3. Enter required data and just press "Install". It's easy :D
 
 ## Security
 InstaPlanner uses a number of security features. User passwords are encrypted via SHA256 and Argon 2.
 The session has a generated token, saved in the database, which is verified each time.
 Each Ajax query is verified by the SHA1 encrypted Nonce.
+
+## Dashboard
+Simple intuitive interface modeled on Instagram website.
+<br/><br/>
+![Dashboard](https://raw.githubusercontent.com/rapiddev/InstaPlanner/master/media/img/sc3.jpg)
+<br/><br/>
+![Login form](https://raw.githubusercontent.com/rapiddev/InstaPlanner/master/media/img/sc2.jpg)
+<br/><br/>
+![Fetching instagram data](https://raw.githubusercontent.com/rapiddev/InstaPlanner/master/media/img/sc1.jpg)
 
 ### Available full language versions
 - [x] English
