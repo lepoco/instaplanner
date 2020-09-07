@@ -28,7 +28,6 @@
 						<a class="nav-link<?php echo ($active == 'accounts' ? ' active' : ''); ?>" id="v-pills-accounts-tab" data-toggle="pill" href="#v-pills-accounts" role="tab" aria-controls="v-pills-accounts" aria-selected="<?php echo ($active == 'accounts' ? 'true' : 'false'); ?>">Accounts</a>
 						<a class="nav-link" id="v-pills-users-tab" data-toggle="pill" href="#v-pills-users" role="tab" aria-controls="v-pills-users" aria-selected="false">Users</a>
 						<a class="nav-link" id="v-pills-encryption-tab" data-toggle="pill" href="#v-pills-encryption" role="tab" aria-controls="v-pills-encryption" aria-selected="false">Encryption</a>
-						<a class="nav-link" id="v-pills-miscellaneous-tab" data-toggle="pill" href="#v-pills-miscellaneous" role="tab" aria-controls="v-pills-miscellaneous" aria-selected="false">Miscellaneous</a>
 					</div>
 				</div>
 				<div class="col-12 col-lg-8">
@@ -40,7 +39,7 @@
 							<div class="form-group">
 								<label for="site_url">Main website URL</label>
 								<input type="text" class="form-control" name="site_url" id="site_url" placeholder="<?php echo $this->InstaPlanner->Options->Get('base_url'); ?>" value="<?php echo $this->InstaPlanner->Options->Get('base_url'); ?>">
-								<small><span class="uppercase"><strong>Attention!</strong></span><br/>Change URLs only if you have moved the site to a different domain or folder. Otherwise, access to the panel may be blocked.</small>
+								<small><span class="uppercase"><strong>Attention!</strong></span><br/>Change URL only if you have moved the site to a different domain or folder. Otherwise, access to the panel may be blocked.</small>
 							</div>
 							<div class="form-group">
 								<label for="dashboard_url">Dashboard URL</label>
@@ -55,11 +54,11 @@
 						<div class="tab-pane fade show <?php echo ($active == 'accounts' ? ' active' : ''); ?>" id="v-pills-accounts" role="tabpanel" aria-labelledby="v-pills-accounts-tab">
 							<h2 class="display-4" style="font-size: 26px;">Accounts</h2>
 							<hr>
-							<div class="accordion" id="accordionExample">
+							<div class="accordion">
 <?php
 
 	$accounts = $this->GetAccounts();
-	if( !empty( $accounts )):
+	if( !empty( $accounts ) ):
 		$avatars_library = $this->InstaPlanner->Options->Get( 'profile_library', 'media/img/profile/' );
 		foreach ($accounts as $account):
 ?>
@@ -72,20 +71,15 @@
 									</div>
 								</div>
 <?php endforeach; else: ?>
-								<div class="card">
-									<div class="card-header" id="headingOne">
-										<h2 class="mb-0">
-											<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-												Collapsible Group Item #1
-											</button>
-										</h2>
-									</div>
-									<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-										<div class="card-body">
-											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-										</div>
-									</div>
-								</div>
+							<div>
+								<p>
+									It looks like you don't have any Instagram accounts saved.
+									<br>
+									<strong>
+										Try to add new ones with the button below
+									</strong>
+								</p>
+							</div>
 <?php endif; ?>
 								
 							</div>

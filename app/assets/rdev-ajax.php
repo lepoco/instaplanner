@@ -38,6 +38,7 @@
 		private const ERROR_SPECIAL_CHARACTERS       = 'e16';
 		private const ERROR_FILE_TYPE                = 'e17';
 		private const ERROR_SAVING_FILE              = 'e18';
+		private const ERROR_DELETING_FILE            = 'e19';
 
 		private const CODE_SUCCESS                   = 's01';
 		
@@ -337,6 +338,67 @@
 				$this->InstaPlanner->User->CurrentID()
 			);
 			
+			$this->Finish( self::CODE_SUCCESS );
+		}
+
+		private function delete_post() : void
+		{
+			if( !$this->InstaPlanner->User->IsManager() )
+				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
+
+			if( !isset(
+				$_POST[ 'post' ]
+			) )
+				$this->Finish( self::ERROR_MISSING_ARGUMENTS );
+
+			$post_id = (int)filter_var( $_POST[ 'post' ], FILTER_SANITIZE_NUMBER_INT );
+
+			$post_data = $this->InstaPlanner->Database->query(
+				"SELECT image FROM rdev_posts WHERE id = ?",
+				$post_id
+			)->fetchArray();
+
+			if( empty( $post_data ) )
+				$this->Finish( self::ERROR_ENTRY_DONT_EXISTS );
+
+			if ( !unlink( ABSPATH . $this->InstaPlanner->Options->Get( 'media_library', 'media/img/posts/' ) . $post_data['image'] ) )
+				$this->Finish( self::ERROR_DELETING_FILE );
+
+			$query = $this->InstaPlanner->Database->query(
+				"DELETE FROM rdev_posts WHERE id = ?",
+				$post_id
+			);
+
+			$this->Finish( self::CODE_SUCCESS );
+		}
+
+		private function update_post() : void
+		{
+			if( !$this->InstaPlanner->User->IsManager() )
+				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
+
+			if( !isset(
+				$_POST[ 'post' ],
+				$_POST[ 'description' ]
+			) )
+				$this->Finish( self::ERROR_MISSING_ARGUMENTS );
+
+			$post_id = (int)filter_var( $_POST[ 'post' ], FILTER_SANITIZE_NUMBER_INT );
+
+			$post_data = $this->InstaPlanner->Database->query(
+				"SELECT image FROM rdev_posts WHERE id = ?",
+				$post_id
+			)->fetchArray();
+
+			if( empty( $post_data ) )
+				$this->Finish( self::ERROR_ENTRY_DONT_EXISTS );
+
+			$query = $this->InstaPlanner->Database->query(
+				"UPDATE rdev_posts SET description = ? WHERE id = ?",
+				filter_var( $_POST[ 'description' ], FILTER_SANITIZE_STRING ),
+				$post_id
+			);
+
 			$this->Finish( self::CODE_SUCCESS );
 		}
 	}

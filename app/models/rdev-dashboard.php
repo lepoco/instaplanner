@@ -118,6 +118,6 @@
 			}
 
 
-			echo "\t\t" . '<script>let instaplaner_photos = [' . $photos . '];let profile_data = {};let order_nonce = \'' . $this->AjaxNonce( 'save_reorder' ) . '\';let current_account = ' . ($this->CurrentAccount( 'id' ) != '' ? $this->CurrentAccount( 'id' ) : 1) . ';</script>';
+			echo "\t\t" . '<script>let instaplaner_photos = [' . $photos . '];let profile_data = {};let order_nonce = \'' . $this->AjaxNonce( 'save_reorder' ) . '\';let current_account = ' . ($this->CurrentAccount( 'id' ) != '' ? $this->CurrentAccount( 'id' ) : 1) . ';let delete_nonce = \'' . $this->AjaxNonce( 'delete_post' ) . '\';let update_nonce = \'' . $this->AjaxNonce( 'update_post' ) . '\';</script>';
 		}
 	}

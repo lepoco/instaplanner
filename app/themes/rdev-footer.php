@@ -22,7 +22,7 @@
 				</div>
 			</div>
 		</div>
-<?php if ($this->name != 'home' && $this->name != 'login' && $this->name != 'install'): ?>
+<?php if ($this->name == 'dashboard' || $this->name == 'settings'): ?>
 		<footer class="instaplaner__footer">
 			<div class="container">
 				<div class="row">

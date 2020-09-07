@@ -309,11 +309,13 @@
 		jQuery(document.body).on('click', '.instaplaner__posts--description', function(e)
 		{
 			let post_data = jQuery(this).data();
+			console.log(post_data);
 
 			if( post_data['id'] != 0 )
 			{
 				jQuery('#instaplaner__editphoto').modal('show');
 
+				jQuery('.instaplaner__editphoto--delete__confirm, .instaplaner__editphoto--update').attr('data-id', post_data['id']);
 				jQuery('#instaplaner__editphoto img').attr('src', post_data['image']);
 				jQuery('#input-current-description').val(post_data['description']);
 			}
@@ -363,11 +365,93 @@
 						jQuery('#input-description').val('');
 					}
 				},
-				fail:function(xhr, textStatus, errorThrown){
-					jQuery('#login-alert').slideToggle();
+				fail:function(xhr, textStatus, errorThrown)
+				{
+					//ełłoł
 				}
 			});
 		}
+
+		jQuery('.instaplaner__editphoto--update').on('click', function(e)
+		{
+			e.preventDefault();
+			let id = jQuery(this).data('id');
+			
+			jQuery.ajax({
+				url: page_data.ajax,
+				type: 'post',
+				data: {
+					action: 'update_post',
+					nonce: update_nonce,
+					post: id,
+					description: jQuery('#input-current-description').val()
+				},
+				success: function(e)
+				{
+					console.log(e);
+
+					if( e == 's01')
+					{
+						jQuery('#instaplaner__editphoto').modal('hide');
+						jQuery('.instaplaner__posts--description').filter(function(){
+							return jQuery(this).data('id') == id
+						}).html('<p>' + jQuery('#input-current-description').val() + '</p>').attr('data-description', jQuery('#input-current-description').val());
+					}
+				},
+				fail:function(xhr, textStatus, errorThrown)
+				{
+					//error
+				}
+			});
+		});
+
+		jQuery('.instaplaner__editphoto--delete').on('click', function(e)
+		{
+			e.preventDefault();
+
+			jQuery('.instaplaner__editphoto--alert').slideToggle('fast', function()
+			{
+				if(jQuery('.instaplaner__editphoto--alert').is(':hidden'))
+					jQuery('.instaplaner__editphoto--alert').slideToggle();
+			});
+			
+
+			console.log('delete');
+		});
+
+		jQuery('.instaplaner__editphoto--delete__confirm').on('click', function(e)
+		{
+			e.preventDefault();
+			let id = jQuery(this).data('id');
+
+			jQuery.ajax({
+				url: page_data.ajax,
+				type: 'post',
+				data: {
+					action: 'delete_post',
+					nonce: delete_nonce,
+					post: id
+				},
+				success: function(e)
+				{
+					console.log(e);
+
+					if( e == 's01')
+					{
+						jQuery('#instaplaner__editphoto').modal('hide');
+
+						jQuery('.instaplaner__post').filter(function(){
+							return jQuery(this).data('id') == id
+						}).remove();
+					}
+				},
+				fail:function(xhr, textStatus, errorThrown)
+				{
+					//error
+				}
+			});
+			console.log('totaly delete');
+		});
 	}
 
 	function page__install()

@@ -50,7 +50,7 @@
 <?php if( method_exists( $this, 'Header' ) ) { $this->Header(); } ?>
 	</head>
 	<body class="instaplaner__body <?php echo 'page-' . $this->name; ?>">
-<?php if ($this->name != 'home' && $this->name != 'login' && $this->name != 'install'): ?>
+<?php if ( $this->name == 'dashboard' || $this->name == 'settings' ): ?>
 		<nav class="instaplaner__navigation navbar navbar-expand-lg fixed-top navbar-light">
 			<div class="container">
 				<a class="navbar-brand" href="<?php echo $this->baseurl . ($this->InstaPlanner->User->IsLoggedIn() ? $this->InstaPlanner->Options->Get( 'dashboard', 'dashboard' ) : '' ); ?>">

@@ -184,11 +184,16 @@
 								<textarea class="form-control form-control-sm" id="input-current-description" name="input-current-description" rows="3"></textarea>
 							</div>
 						</form>
+						<div class="instaplaner__editphoto--alert alert alert-danger" style="display: none;">
+							Are you sure you want to delete this photo?
+							<hr>
+							<button class="instaplaner__editphoto--delete__confirm btn btn-sm btn-outline-danger">Confirm</button>
+						</div>
 					</div>
 					<div class="btn-group-vertical">
-						<button id="btn-add-upload" type="button" class="btn btn-outline-dark">Update</button>
-						<button type="button" class="btn btn-outline-dark"><span>Delete</span></button>
-						<button type="button" class="btn btn-outline-dark" data-dismiss="modal"><span>Cancel</span></button>
+						<button type="button" class="instaplaner__editphoto--update btn btn-outline-dark">Update</button>
+						<button type="button" class="instaplaner__editphoto--delete btn btn-outline-dark"><span>Delete</span></button>
+						<button type="button" class="instaplaner__editphoto--cancel btn btn-outline-dark" data-dismiss="modal"><span>Cancel</span></button>
 					</div>
 				</div>
 			</div>

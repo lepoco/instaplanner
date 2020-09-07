@@ -33,7 +33,8 @@
 
 	body.page-home,
 	body.page-login,
-	body.page-install {
+	body.page-install,
+	body.page-404 {
 		overflow-y: auto;
 		display: flex;
 		justify-content: center;
@@ -42,7 +43,8 @@
 
 	.instaplanner-home,
 	.instaplanner-login,
-	.instaplanner-install {
+	.instaplanner-install,
+	.instaplanner-404 {
 		width: 100%;
 	}
 
@@ -194,6 +196,10 @@
 		margin: 0;
 	}
 
+	.instaplaner__profile__description--title .dropdown-toggle:focus {
+		box-shadow: none;
+	}
+
 	.instaplaner__profile__description--title .dropdown-toggle:after {
 		display: none;
 	}
@@ -261,6 +267,7 @@
 		border: 0;
 		font-size: 16px;
 		line-height: 24px;
+		white-space: pre-line;
 	}
 
 	.instaplaner__profile--link {
