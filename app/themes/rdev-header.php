@@ -55,7 +55,7 @@
 			<div class="container">
 				<a class="navbar-brand" href="<?php echo $this->baseurl . ($this->InstaPlanner->User->IsLoggedIn() ? $this->InstaPlanner->Options->Get( 'dashboard', 'dashboard' ) : '' ); ?>">
 					<div class="instaplaner__navigation__logo">
-						<img src="https://rdev.lan/dev/instaplaner/media/img/instaplaner.svg" alt="InstaPlaner Logo">
+						<img src="<?php echo $this->GetImage('instaplanner-dark.svg') ?>" alt="InstaPlaner Logo">
 					</div>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#instaplaner-navbar-mobile" aria-controls="instaplaner-navbar-mobile" aria-expanded="false" aria-label="Toggle navigation">

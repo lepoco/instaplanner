@@ -22,7 +22,7 @@
 					<div class="row">
 						<div class="col-12 col-lg-6">
 							<div class="instaplanner-install__logo">
-								<img src="<?php echo $this->GetImage('instaplaner-white.svg') ?>" alt="InstaPlaner logo">
+								<img src="<?php echo $this->GetImage('instaplanner-white.svg') ?>" alt="InstaPlaner logo">
 							</div>
 						</div>
 						<div class="col-12 col-lg-6">

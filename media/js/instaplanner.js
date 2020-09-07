@@ -311,6 +311,13 @@
 			jQuery('.instaplaner__post').addClass('instaplaner__post--dragger');
 		});
 
+		new ClipboardJS('.instaplaner__editphoto--copy', {
+			text: function(trigger) {
+				//console.log(jQuery('#input-current-description').val());
+				return jQuery('#input-current-description').val();
+			}
+		});
+
 		jQuery(document.body).on('click', '.instaplaner__posts--description', function(e)
 		{
 			let post_data = jQuery(this).data();
@@ -327,6 +334,7 @@
 				jQuery('.instaplaner__editphoto--delete__confirm, .instaplaner__editphoto--update').attr('data-id', post_data['id']);
 				jQuery('#instaplaner__editphoto img').attr('src', post_data['image']);
 				jQuery('#input-current-description').val(post_data['description']);
+				jQuery('.instaplaner__editphoto--copy').attr('data-clipboard-text', post_data['description']);
 			}
 		});
 

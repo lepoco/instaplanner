@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS rdev_accounts (
 	followers INT(32),
 	following INT(32),
 	description LONGTEXT,
-	post_order LONGTEXT
+	post_order LONGTEXT,
+	last_update DATETIME DEFAULT CURRENT_TIMESTAMP
 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- Posts table

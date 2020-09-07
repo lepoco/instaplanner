@@ -61,7 +61,13 @@
 									</div>
 								</div>
 								<div style="display: flex;width: 100%;">
-									<a class="instaplaner__profile__description--href" href="<?php echo $dashboard . 'settings' ?>">Settings</a> <a class="instaplaner__profile__description--href" href="<?php echo $dashboard . 'signout' ?>">Sign Out</a>
+									<a class="instaplaner__profile__description--href" href="<?php echo $dashboard . 'settings' ?>">Settings</a>
+									<a class="instaplaner__profile__description--href" href="<?php echo $dashboard . 'signout' ?>">Sign Out</a>
+									<a class="instaplaner__profile__description--href instaplaner__profile__description--share" href="#share" style="max-width: 50px;">
+										<svg width="13px" height="13px" viewBox="0 0 16 16" class="bi bi-arrow-90deg-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+										</svg>
+									</a>
 								</div>
 							</div>
 						</div>
@@ -193,9 +199,10 @@
 					</div>
 					<div class="btn-group-vertical">
 						<button type="button" class="instaplaner__editphoto--update btn btn-outline-dark">Update</button>
+						<!--<button type="button" class="instaplaner__editphoto--copy btn btn-outline-dark" data-clipboard-text="Empty">Copy description</button>-->
 						<a href="#" download="#" type="button" class="instaplaner__editphoto--download btn btn-outline-dark">Download photo</a>
 						<button type="button" class="instaplaner__editphoto--delete btn btn-outline-dark"><span>Delete</span></button>
-						<button type="button" class="instaplaner__editphoto--cancel btn btn-outline-dark" data-dismiss="modal"><span>Cancel</span></button>
+						<button type="button" class="instaplaner__editphoto--cancel btn btn-outline-dark" data-dismiss="modal"><span>Close</span></button>
 					</div>
 				</div>
 			</div>

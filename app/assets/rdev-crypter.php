@@ -35,7 +35,7 @@
 			if($type == 'password')
 				return (defined( 'INSTAPLANNER_ALGO' ) ? password_hash( hash_hmac( 'sha256', $text, PASSWORD_SALT ), INSTAPLANNER_ALGO ) : '' );
 			else if($type == 'nonce')
-				return (defined( 'NONCE_SALT' ) ? hash_hmac('sha1', $text . (new DateTime())->format('Y-m-d H'), NONCE_SALT) : '' );
+				return (defined( 'NONCE_SALT' ) ? hash_hmac('sha1', $text . (new DateTime())->format('Y-m-d'), NONCE_SALT) : '' );
 			else if($type == 'token')
 				return (defined( 'SESSION_SALT' ) ? hash_hmac('sha256', $text, SESSION_SALT) : '' );
 		}
@@ -62,7 +62,7 @@
 			}
 			else if( $type == 'nonce' )
 			{
-				if( ( $plain ? hash_hmac( 'sha1', $text . (new DateTime())->format('Y-m-d H'), NONCE_SALT ) : $text ) == $compare_text )
+				if( ( $plain ? hash_hmac( 'sha1', $text . (new DateTime())->format('Y-m-d'), NONCE_SALT ) : $text ) == $compare_text )
 					return true;
 				else
 					return false;
