@@ -82,7 +82,7 @@
 						<p>
 							<?php echo $this->CurrentAccount('description'); ?>
 						</p>
-						<a target="_blank" rel="noopener" href="<?php echo $this->CurrentAccount('website'); ?>" class="instaplaner__profile--link"><?php echo str_replace(array('https://', 'http://', 'www.'), array('','',''), $this->CurrentAccount('website')); ?></a>
+						<a target="_blank" rel="noopener" href="<?php echo $this->CurrentAccount('website'); ?>" class="instaplaner__profile--link"><?php echo trim(str_replace(array('https://', 'http://', 'www.'), array('','',''), $this->CurrentAccount('website')), '/'); ?></a>
 						<div class="instaplaner__profile--followers">
 							Followed by <a href="https://rdev.cc/?ref=instaplaner" target="_blank" rel="noopener">rapiddev</a> and <a href="https://4geek.co/" target="_blank" rel="noopener">4geek.co</a>
 						</div>
