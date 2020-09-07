@@ -35,10 +35,11 @@ Simple intuitive interface modeled on Instagram website.
 - [x] English
 
 ### Third party solutions
+- Database.php by the David Adams<br/>[https://codeshack.io/super-fast-php-mysql-database-class/](https://codeshack.io/super-fast-php-mysql-database-class/)
 - Bootstrap by the Bootstrap team<br/>[https://getbootstrap.com/](https://getbootstrap.com/)
 - Bootstrap Icons by the Bootstrap Authors<br/>[https://icons.getbootstrap.com/](https://icons.getbootstrap.com/)
 - jQuery by the jQuery Foundation<br/>[https://jquery.org/](https://jquery.org/)
-- zxcvbn by the an Wheeler and Dropbox, Inc.<br/>[https://github.com/dropbox/zxcvbn](https://github.com/dropbox/zxcvbn)
+- zxcvbn by the Dan Wheeler and Dropbox, Inc.<br/>[https://github.com/dropbox/zxcvbn](https://github.com/dropbox/zxcvbn)
 - Clipboard.js by the Zeno Rocha<br/>[https://github.com/zenorocha/clipboard.js/](https://github.com/zenorocha/clipboard.js/)
 - Material Design Icons by the Google and other creators | Maintained by Austin Andrews<br/>[https://materialdesignicons.com/](https://materialdesignicons.com/)
 - Aerial View Of Eiffel Tower by the Chris Molloy<br/>[https://www.pexels.com/@chris-molloy-220084](https://www.pexels.com/@chris-molloy-220084)
