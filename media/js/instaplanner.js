@@ -130,61 +130,61 @@
 
 	function page__dashboard()
 	{
-		new Sortable(
-			document.getElementById('instaplaner__posts'),
-			{
-				handle: ".instaplaner__posts--drag",
-				draggable: ".instaplaner__post--dragger",
-				easing: "cubic-bezier(1, 0, 0, 1)",
-				animation: 300,
-				setData: function ( dataTransfer, dragEl )
+		var posts_container = document.getElementById( 'instaplaner__posts' );
+		if (typeof (posts_container) != 'undefined' && posts_container != null)
+		{
+			new Sortable(
+				document.getElementById('instaplaner__posts'),
 				{
-					let fakeGhost = document.createElement('div');
-					fakeGhost.style.opacity = 0;
-					dataTransfer.setDragImage(fakeGhost, 0, 0);
-				},
-				onEnd: function ( evt )
-				{
-					let order_list = [];
-					let posts = jQuery('#instaplaner__posts').children();
+					handle: ".instaplaner__posts--drag",
+					draggable: ".instaplaner__post--dragger",
+					easing: "cubic-bezier(1, 0, 0, 1)",
+					animation: 300,
+					setData: function (dataTransfer, dragEl) {
+						let fakeGhost = document.createElement('div');
+						fakeGhost.style.opacity = 0;
+						dataTransfer.setDragImage(fakeGhost, 0, 0);
+					},
+					onEnd: function ( evt )
+					{
+						let order_list = [];
+						let posts = jQuery('#instaplaner__posts').children();
 
-					for (let i = 0; i < posts.length; i++)
-					{
-						order_list.push( jQuery(posts[i]).data()['id'] );
+						for (let i = 0; i < posts.length; i++) {
+							order_list.push(jQuery(posts[i]).data()['id']);
+						}
+
+						for (let i = order_list.length - 1; i > -1; i--) {
+							if (order_list[i] == 0) {
+								order_list.splice(i, 1);
+							}
+							else {
+								break;
+							}
+						}
+
+						jQuery.ajax({
+							url: page_data.ajax,
+							type: 'post',
+							data: {
+								action: 'save_reorder',
+								nonce: page_data.order_nonce,
+								account: page_data.current_account_id,
+								order: JSON.stringify(order_list)
+							},
+							success: function (e)
+							{
+								console.log('The order of the list has been saved');
+							},
+							fail: function (xhr, textStatus, errorThrown)
+							{
+								//error
+							}
+						});
 					}
-					
-					for (let i = order_list.length - 1; i > -1; i--)
-					{
-						if( order_list[i] == 0)
-						{
-							order_list.splice(i, 1);
-						}
-						else
-						{
-							break;
-						}
-					}
-					jQuery.ajax({
-						url: page_data.ajax,
-						type: 'post',
-						data: {
-							action: 'save_reorder',
-							nonce: page_data.order_nonce,
-							account: page_data.current_account_id,
-							order: JSON.stringify( order_list )
-						},
-						success: function(e)
-						{
-							console.log('The order of the list has been saved');
-						},
-						fail:function(xhr, textStatus, errorThrown)
-						{
-							//error
-						}
-					});
 				}
-			}
-		);
+			);
+		}
 
 		function addPhoto( id = 0, image = null, desc = null, prepend = false, preview = true )
 		{

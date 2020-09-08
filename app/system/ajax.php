@@ -1,4 +1,4 @@
-<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php
 /**
  * @package InstaPlanner
  *
@@ -7,6 +7,8 @@
  * @license https://opensource.org/licenses/MIT
  * @link https://rdev.cc/
  */
+	namespace RapidDev\InstaPlanner;
+	defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 	
 	use RapidDev\InstaPlanner\Ajax;
 	
@@ -24,10 +26,10 @@
 		* sign_in
 		* The action is triggered on login
 		*
-		* @access   private
+		* @access   protected
 		* @return	void
 		*/
-		private function sign_in() : void
+		protected function sign_in() : void
 		{
 			if( !isset( $_POST['login'], $_POST['password'] ) )
 				$this->Finish( self::ERROR_MISSING_ARGUMENTS );
@@ -58,10 +60,10 @@
 		* register_account
 		* Add a new account from Instagram profile and save it's profile picture
 		*
-		* @access   private
+		* @access   protected
 		* @return	void
 		*/
-		private function register_account() : void
+		protected function register_account() : void
 		{
 			if( !$this->Master->User->IsManager() )
 				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
@@ -116,10 +118,10 @@
 		* add_post
 		* Add a new post to the database assigned to selected account
 		*
-		* @access   private
+		* @access   protected
 		* @return	void
 		*/
-		private function add_post() : void
+		protected function add_post() : void
 		{
 			if( !$this->Master->User->IsManager() )
 				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
@@ -187,10 +189,10 @@
 		* save_reorder
 		* Save the order in which the posts are displayed
 		*
-		* @access   private
+		* @access   protected
 		* @return	void
 		*/
-		private function save_reorder() : void
+		protected function save_reorder() : void
 		{
 			if( !$this->Master->User->IsManager() )
 				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
@@ -214,10 +216,10 @@
 		* delete_post
 		* Delete the post from the database and its photo
 		*
-		* @access   private
+		* @access   protected
 		* @return	void
 		*/
-		private function delete_post() : void
+		protected function delete_post() : void
 		{
 			if( !$this->Master->User->IsManager() )
 				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
@@ -252,10 +254,10 @@
 		* update_post
 		* Update the post description in the database
 		*
-		* @access   private
+		* @access   protected
 		* @return	void
 		*/
-		private function update_post() : void
+		protected function update_post() : void
 		{
 			if( !$this->Master->User->IsManager() )
 				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );

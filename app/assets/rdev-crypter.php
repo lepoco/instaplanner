@@ -1,4 +1,4 @@
-<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php
 /**
  * @package InstaPlanner
  *
@@ -7,6 +7,8 @@
  * @license https://opensource.org/licenses/MIT
  * @link https://rdev.cc/
  */
+	namespace RapidDev\InstaPlanner;
+	defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 	use DateTime;
 

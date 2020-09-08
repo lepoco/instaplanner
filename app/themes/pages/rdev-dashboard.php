@@ -183,7 +183,7 @@
 		<div class="modal fade instaplaner__editphoto" id="instaplaner__editphoto" data-keyboard="false" tabindex="-1" aria-labelledby="instaplaner__editphoto--label" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<img src="https://rdev.lan/dev/instaplaner/media/img/posts/2.jpg" class="card-img-top" alt="...">
+					<img src="" class="card-img-top" alt="...">
 					<div class="modal-body">
 						<form>
 							<div class="form-group">

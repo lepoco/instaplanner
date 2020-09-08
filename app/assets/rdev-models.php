@@ -1,4 +1,4 @@
-<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php
 /**
  * @package InstaPlanner
  *
@@ -7,6 +7,8 @@
  * @license https://opensource.org/licenses/MIT
  * @link https://rdev.cc/
  */
+	namespace RapidDev\InstaPlanner;
+	defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 	use RapidDev\InstaPlanner\JSParse;
 	use RapidDev\InstaPlanner\Crypter;
@@ -187,13 +189,14 @@
 
 		/**
 		* Exit
-		* Exit the script
+		* Kill the script and close the database connection
 		*
 		* @access   protected
 		*/
 		protected function Exit()
 		{
-			$this->Master->Database->Close();
+			if( $this->Master->Database != null )
+				$this->Master->Database->Close();
 			$this->Master->Session->Close();
 
 			exit;
@@ -339,7 +342,7 @@
 		{
 			$this->styles = array(
 				array( 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css', 'sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==', '4.5.2' ),
-				array( $this->baseurl . 'media/css/instaplanner.min.css', '', $this->version )
+				array( $this->baseurl . 'media/css/instaplanner.css', '', $this->version )
 			);
 		}
 
@@ -358,7 +361,7 @@
 				array( 'https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js', 'sha512-TZlMGFY9xKj38t/5m2FzJ+RM/aD5alMHDe26p0mYUMoCF5G7ibfHUQILq0qQPV3wlsnCwL+TPRNK4vIWGLOkUQ==', '4.4.2' ),
 				array( 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js', 'sha512-hDWGyh+Iy4Mr9AHOzUP2+Y0iVPn/BwxxaoSleEjH/i1o4EVTF/sh0/A1Syii8PWOae+uPr+T/KHwynoebSuAhw==', '2.0.6' ),
 				array( 'https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.2/Sortable.min.js' , 'sha512-ELgdXEUQM5x+vB2mycmnSCsiDZWQYXKwlzh9+p+Hff4f5LA+uf0w2pOp3j7UAuSAajxfEzmYZNOOLQuiotrt9Q==', '1.10.2' ),
-				array( $this->baseurl . 'media/js/instaplanner.min.js', '', $this->version )
+				array( $this->baseurl . 'media/js/instaplanner.js', '', $this->version )
 			);
 		}
 

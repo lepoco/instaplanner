@@ -1,12 +1,14 @@
-<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php
 /**
- * @package Master
+ * @package InstaPlanner
  *
  * @author Leszek Pomianowski
  * @copyright Copyright (c) 2020, RapidDev
  * @license https://opensource.org/licenses/MIT
  * @link https://rdev.cc/
  */
+	namespace RapidDev\InstaPlanner;
+	defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 	/**
 	*

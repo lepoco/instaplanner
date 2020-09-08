@@ -1,4 +1,4 @@
-<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php
 /**
  * @package InstaPlanner
  *
@@ -7,6 +7,8 @@
  * @license https://opensource.org/licenses/MIT
  * @link https://rdev.cc/
  */
+	namespace RapidDev\InstaPlanner;
+	defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 	use Mysqli;
 	use RapidDev\InstaPlanner\Models as Template;
@@ -203,7 +205,7 @@
 		{
 
 			$config  = "";
-			$config .= "<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );\n/**\n * @package InstaPlanner\n *\n * @author Leszek Pomianowski\n * @copyright Copyright (c) 2020, RapidDev\n * @license https://opensource.org/licenses/MIT\n * @link https://rdev.cc/\n */";
+			$config .= "<?php\n/**\n * @package InstaPlanner\n *\n * @author Leszek Pomianowski\n * @copyright Copyright (c) 2020, RapidDev\n * @license https://opensource.org/licenses/MIT\n * @link https://rdev.cc/\n */\n\tnamespace RapidDev\InstaPlanner;\n\tdefined( 'ABSPATH' ) or die( 'No script kiddies please!' );";
 
 			$config .= "\n\n\t/** Passwords hash type */\n\tdefine( 'PASS_ALGO', " . $this->SetAlgo() . " );";
 
@@ -332,16 +334,5 @@
 			$this->Master->User->LogIn(array('user_id' => 1, 'user_role' => 'admin'));
 
 			$database->close();
-		}
-
-		/**
-		* Footer
-		* Prints data in footer
-		*
-		* @access   private
-		*/
-		public function Footer()
-		{
-			echo "\t\t" . '<script>jQuery("#input_user_password").on("change paste keyup",function(){let e=jQuery(this).val(),s=zxcvbn(e);""!==e?jQuery(".def_password--strength").html("Strength: <strong>"+{0:"Worst ☹",1:"Bad ☹",2:"Weak ☹",3:"Good 🙃",4:"Strong 🙂"}[s.score]+"</strong><br/><span class=\'feedback\'>"+s.feedback.warning+" "+s.feedback.suggestions+"</span"):jQuery(".def_password--strength").html("")});</script>';
 		}
 	}

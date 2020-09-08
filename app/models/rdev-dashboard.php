@@ -1,4 +1,4 @@
-<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php
 /**
  * @package InstaPlanner
  *
@@ -7,6 +7,8 @@
  * @license https://opensource.org/licenses/MIT
  * @link https://rdev.cc/
  */
+	namespace RapidDev\InstaPlanner;
+	defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 	use RapidDev\InstaPlanner\Models as Template;
 
@@ -104,6 +106,15 @@
 						break;
 					}
 				}
+			}
+
+			//No accounts in database
+			if( empty( $this->current_account ) )
+			{
+				$this->current_account = array(
+					'id' => 0,
+					'post_order' => '[]'
+				);
 			}
 
 			if( $key == null )
