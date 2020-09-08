@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS rdev_accounts (
 	following INT(32),
 	description LONGTEXT,
 	post_order LONGTEXT,
+	active BOOLEAN DEFAULT true,
 	last_update DATETIME DEFAULT CURRENT_TIMESTAMP
 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 

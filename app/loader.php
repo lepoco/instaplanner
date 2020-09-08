@@ -13,24 +13,26 @@
 		require_once ABSPATH . 'app/config.php';
 
 	/** Assets **/
-	require_once ABSPATH . 'app/assets/' . 'rdev-uri.php';
+	require_once ASSPATH . 'rdev-uri.php';
 
-	require_once ABSPATH . 'app/assets/' . 'rdev-crypter.php';
+	require_once ASSPATH . 'rdev-crypter.php';
 	
-	require_once ABSPATH . 'app/assets/' . 'rdev-database.php';
+	require_once ASSPATH . 'rdev-database.php';
 	
-	require_once ABSPATH . 'app/assets/' . 'rdev-session.php';
+	require_once ASSPATH . 'rdev-session.php';
 
-	require_once ABSPATH . 'app/assets/' . 'rdev-options.php';
+	require_once ASSPATH . 'rdev-options.php';
 
-	require_once ABSPATH . 'app/assets/' . 'rdev-jsparse.php';
+	require_once ASSPATH . 'rdev-jsparse.php';
 
-	require_once ABSPATH . 'app/assets/' . 'rdev-models.php';
+	require_once ASSPATH . 'rdev-models.php';
 
-	require_once ABSPATH . 'app/assets/' . 'rdev-user.php';
+	require_once ASSPATH . 'rdev-user.php';
 
-	require_once ABSPATH . 'app/assets/' . 'rdev-dashboard.php';
+	require_once ASSPATH . 'rdev-dashboard.php';
 
-	require_once ABSPATH . 'app/assets/' . 'rdev-ajax.php';
+	require_once ASSPATH . 'rdev-ajax.php';
 
-	require_once ABSPATH . 'app/system/' . 'instaplanner.php';
+	require_once ABSPATH . 'app/system/' . 'ajax.php';
+	
+	require_once ABSPATH . 'app/system/' . 'master.php';

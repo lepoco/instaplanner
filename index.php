@@ -20,6 +20,9 @@
 	/** Main constants for all files */
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 
+	/** Main constants for all files */
+	define( 'ASSPATH', ABSPATH . 'app/assets/' );
+
 	/** Initialization file */
 	if ( !is_file( ABSPATH . 'app/loader.php' ) )
 		exit('Fatal error');

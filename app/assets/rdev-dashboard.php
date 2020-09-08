@@ -8,6 +8,8 @@
  * @link https://rdev.cc/
  */
 
+ 	use RapidDev\InstaPlanner\AjaxQuery;
+
 	/**
 	*
 	* Dashboard
@@ -82,7 +84,7 @@
 			switch ($this->subpage)
 			{
 				case 'ajax':
-					new Ajax( $this->Master );
+					new AjaxQuery( $this->Master );
 					break;
 
 				case '__dashboard__':

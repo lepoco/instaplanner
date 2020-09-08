@@ -30,7 +30,7 @@
 		* @param	string $type
 		* @return   string hash_hmac()
 		*/
-		public static function Encrypt(string $text, string $type = 'password') : string
+		public static function Encrypt( string $text, string $type = 'password' ) : string
 		{
 			if($type == 'password')
 				return (defined( 'PASS_ALGO' ) ? password_hash( hash_hmac( 'sha256', $text, PASSWORD_SALT ), PASS_ALGO ) : '' );
@@ -51,7 +51,7 @@
 		* @param	bool   $plain
 		* @return	bool   true/false
 		*/
-		public static function Compare(string $text, string $compare_text, string $type = 'password', bool $plain = true) : bool
+		public static function Compare( string $text, string $compare_text, string $type = 'password', bool $plain = true ) : bool
 		{
 			if( $type == 'password' )
 			{
@@ -76,7 +76,7 @@
 			}
 		}
 
-		public static function BaseSalter(int $length) : string
+		public static function BaseSalter( int $length ) : string
 		{
 			self::SrandSeed();
 
@@ -88,7 +88,7 @@
 			return $randomString;
 		}
 
-		public static function DeepSalter(int $length) : string
+		public static function DeepSalter( int $length ) : string
 		{
 			self::SrandSeed();
 
@@ -108,12 +108,12 @@
 				$crx .= $characters[mt_rand(0, 75)];
 
 			$rand = crc32( self::MakeSeed() . '@' . $crx ) * 2147483647;
-			mt_srand($rand);
+			mt_srand( $rand );
 		}
 
 		private static function MakeSeed() : int
 		{
-			list($usec, $sec) = explode(' ', microtime());
+			list( $usec, $sec ) = explode( ' ', microtime() );
 			return $sec + $usec * 1000000;
 		}
 	}
