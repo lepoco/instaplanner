@@ -29,7 +29,7 @@
 					<div class="col-12 col-lg-6">
 						<ul class="list-inline instaplaner__footer__links">
 							<li class="list-inline-item">
-								<a href="https://github.com/rapiddev/instaplaner" rel="nofollow noopener" target="_blank">Source Code on GitHub</a>
+								<a href="https://github.com/rapiddev/InstaPlanner" rel="nofollow noopener" target="_blank">Source Code on GitHub</a>
 							</li>
 							<li class="list-inline-item">
 								<a href="https://rdev.cc/" rel="nofollow noopener" target="_blank">RapidDev</a>

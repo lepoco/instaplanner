@@ -2,6 +2,7 @@
 .htaccess
 app/config.php
 *.psd
+.vscode/launch.json
 
 #Ignored folders
 .vscode/*
