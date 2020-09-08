@@ -17,11 +17,14 @@
 	/** Instaplaner version */
 	define( 'INSTAPLANNER_VERSION', '1.0.0' );
 	
-	/** Main constants for all files */
+	/** Absolute path */
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 
-	/** Main constants for all files */
+	/** Assets path */
 	define( 'ASSPATH', ABSPATH . 'app/assets/' );
+
+	/** System scripts path */
+	define( 'SYSPATH', ABSPATH . 'app/system/' );
 
 	/** Initialization file */
 	if ( !is_file( ABSPATH . 'app/loader.php' ) )

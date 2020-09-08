@@ -35,6 +35,7 @@
 
 	require_once ASSPATH . 'rdev-ajax.php';
 
-	require_once ABSPATH . 'app/system/' . 'ajax.php';
+	/** System **/
+	require_once SYSPATH . 'ajax.php';
 	
-	require_once ABSPATH . 'app/system/' . 'master.php';
+	require_once SYSPATH . 'master.php';

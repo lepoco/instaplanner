@@ -55,9 +55,14 @@
 										</svg>
 									</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<?php foreach ( $this->GetAccounts() as $account ) {
+										<?php
+										
+										foreach ( $this->GetAccounts() as $account )
 											echo ($this->CurrentAccount('id') != $account['id'] ? '<a class="dropdown-item" href="' . $dashboard . 'account/' . $account['id'] . '">' . strtolower( $account['name'] ) . '</a>' : '');
-										} ?>
+
+										?>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="<?php echo $dashboard . 'settings/?page=accounts&add_account=true'; ?>"><strong>Add new account</strong></a>
 									</div>
 								</div>
 								<div style="display: flex;width: 100%;">
@@ -136,20 +141,7 @@
 					</div>
 				</div>
 				<div id="instaplaner__posts" class="row">
-					
-					<!--<div class="col-12 col-lg-4 instaplaner__post instaplaner__post--preview"> <!-- instaplaner__post--preview -->
-						<!--<div class="instaplaner__posts--post">
-							<div class="instaplaner__posts__square" style="background-image: url('https://scontent-frx5-1.cdninstagram.com/v/t51.12442-15/e35/c74.315.949.949a/s150x150/64739174_2287426444670038_8666411748486845748_n.jpg?_nc_ht=scontent-frx5-1.cdninstagram.com&amp;_nc_cat=110&amp;_nc_ohc=4i3zM6CIUgEAX_TKp9j&amp;_nc_tp=16&amp;oh=2b9a651380e736ada8dcd11bb0d821f4&amp;oe=5F544F98');">
-							</div>
-							<div class="instaplaner__posts--description">
-								<p>Opis</p>
-							</div>
-							<div class="instaplaner__posts--drag">
-								<div class="instaplaner__posts--drag__icon"></div>
-							</div>
-						</div>
-					</div>
-				-->
+
 				</div>
 			</div>
 		</main>
