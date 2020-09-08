@@ -1,4 +1,4 @@
-<?php namespace InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 /**
  * @package Master
  *
@@ -439,4 +439,3 @@
 			$this->Finish( self::CODE_SUCCESS );
 		}
 	}
-?>

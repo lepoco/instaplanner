@@ -1,4 +1,4 @@
-<?php namespace InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 /**
  * @package InstaPlanner
  *
@@ -171,4 +171,3 @@
 			//$this->Master->User->UpadeField('user_selected_account', $id);
 		}
 	}
-?>

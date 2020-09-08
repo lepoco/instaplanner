@@ -8,7 +8,7 @@
  * @link https://rdev.cc/
  */
 	
-	namespace InstaPlanner;
+	namespace RapidDev\InstaPlanner;
 
 	/** Verify PHP version */
 	if ( version_compare( $ver = PHP_VERSION, $req = '7.0.11', '<' ) )
@@ -27,4 +27,3 @@
 
 	/** Init **/
 	( new InstaPlanner() );
-?>

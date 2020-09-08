@@ -1,4 +1,4 @@
-<?php namespace InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 /**
  * @package InstaPlanner
  *
@@ -202,7 +202,7 @@
 		{
 
 			$config  = "";
-			$config .= "<?php namespace InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );\n/**\n * @package InstaPlanner\n *\n * @author Leszek Pomianowski\n * @copyright Copyright (c) 2020, RapidDev\n * @license https://opensource.org/licenses/MIT\n * @link https://rdev.cc/\n */";
+			$config .= "<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );\n/**\n * @package InstaPlanner\n *\n * @author Leszek Pomianowski\n * @copyright Copyright (c) 2020, RapidDev\n * @license https://opensource.org/licenses/MIT\n * @link https://rdev.cc/\n */";
 
 			$config .= "\n\n\t/** Passwords hash type */\n\tdefine( 'INSTAPLANNER_ALGO', " . $this->SetAlgo() . " );";
 
@@ -217,7 +217,7 @@
 
 			$config .= "\n\n\t/** Debugging */\n\tdefine( 'INSTAPLANNER_DEBUG', false );";
 
-			$config .= "\n\n?>\n";
+			$config .= "\n";
 
 			$path = ABSPATH . 'app/config.php';
 			file_put_contents( $path, $config );

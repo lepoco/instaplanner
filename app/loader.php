@@ -1,4 +1,4 @@
-<?php namespace InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 /**
  * @package InstaPlanner
  *
@@ -34,5 +34,3 @@
 	require_once ABSPATH . 'app/assets/' . 'rdev-ajax.php';
 
 	require_once ABSPATH . 'app/system/' . 'instaplanner.php';
-
-?>

@@ -1,4 +1,4 @@
-<?php namespace InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 /**
  * @package InstaPlanner
  *
@@ -91,5 +91,3 @@
 			return array_keys($arr) !== range(0, count($arr) - 1);
 		}
 	}
-
-?>

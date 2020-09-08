@@ -1,4 +1,4 @@
-<?php namespace InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 /**
  * @package InstaPlanner
  *
@@ -28,7 +28,6 @@
 			$this->AddPageData( 'order_nonce', $this->AjaxNonce( 'save_reorder' ) );
 			$this->AddPageData( 'delete_nonce', $this->AjaxNonce( 'delete_post' ) );
 			$this->AddPageData( 'update_nonce', $this->AjaxNonce( 'update_post' ) );
-
 			$this->FetchPosts();
 		}
 
