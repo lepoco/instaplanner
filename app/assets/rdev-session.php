@@ -52,6 +52,6 @@
 		*/
 		public function Close() : void
 		{
-			
+			//
 		}
 	}

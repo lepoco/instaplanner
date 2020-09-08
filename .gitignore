@@ -4,6 +4,7 @@ app/config.php
 *.psd
 
 #Ignored folders
+.vscode/*
 media/img/posts/*
 media/img/profile/*
 media/img/avatars/*

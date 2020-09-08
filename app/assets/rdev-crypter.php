@@ -33,7 +33,7 @@
 		public static function Encrypt(string $text, string $type = 'password') : string
 		{
 			if($type == 'password')
-				return (defined( 'INSTAPLANNER_ALGO' ) ? password_hash( hash_hmac( 'sha256', $text, PASSWORD_SALT ), INSTAPLANNER_ALGO ) : '' );
+				return (defined( 'PASS_ALGO' ) ? password_hash( hash_hmac( 'sha256', $text, PASSWORD_SALT ), PASS_ALGO ) : '' );
 			else if($type == 'nonce')
 				return (defined( 'NONCE_SALT' ) ? hash_hmac('sha1', $text . (new DateTime())->format('Y-m-d'), NONCE_SALT) : '' );
 			else if($type == 'token')

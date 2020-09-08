@@ -9,6 +9,7 @@
  */
 
 	use Mysqli;
+	use RapidDev\InstaPlanner\Models as Template;
 
 	/**
 	*
@@ -18,7 +19,7 @@
 	* @license	MIT License
 	* @access   public
 	*/
-	class Model extends Models
+	class Model extends Template
 	{	
 		/**
 		* Get
@@ -29,7 +30,7 @@
 		public function Get()
 		{
 			$this->InstallForm();
-			exit;
+			$this->Exit();
 		}
 
 		/**
@@ -41,7 +42,7 @@
 		public function Post()
 		{
 			$this->InstallForm();
-			exit;
+			$this->Exit();
 		}
 
 		/**
@@ -117,7 +118,7 @@
 				exit(json_encode($result));
 			}
 
-			$this->BuildResources($database, array(
+			$this->BuildResources( $database, array(
 				'path' => filter_var($_POST['input_scriptname'], FILTER_SANITIZE_STRING),
 				'db_name' => filter_var($_POST['input_db_name'], FILTER_SANITIZE_STRING),
 				'db_host' => filter_var($_POST['input_db_host'], FILTER_SANITIZE_STRING),
@@ -204,18 +205,18 @@
 			$config  = "";
 			$config .= "<?php namespace RapidDev\InstaPlanner; defined( 'ABSPATH' ) or die( 'No script kiddies please!' );\n/**\n * @package InstaPlanner\n *\n * @author Leszek Pomianowski\n * @copyright Copyright (c) 2020, RapidDev\n * @license https://opensource.org/licenses/MIT\n * @link https://rdev.cc/\n */";
 
-			$config .= "\n\n\t/** Passwords hash type */\n\tdefine( 'INSTAPLANNER_ALGO', " . $this->SetAlgo() . " );";
+			$config .= "\n\n\t/** Passwords hash type */\n\tdefine( 'PASS_ALGO', " . $this->SetAlgo() . " );";
 
-			$config .= "\n\n\t/** Database table */\n\tdefine( 'INSTAPLANNER_DB_NAME', '" . $args['db_name'] . "' );";
-			$config .= "\n\t/** Database table */\n\tdefine( 'INSTAPLANNER_DB_HOST', '" . $args['db_host'] . "' );";
-			$config .= "\n\t/** Database table */\n\tdefine( 'INSTAPLANNER_DB_USER', '" . $args['db_user'] . "' );";
-			$config .= "\n\t/** Database table */\n\tdefine( 'INSTAPLANNER_DB_PASS', '" . $args['db_pass'] . "' );";
+			$config .= "\n\n\t/** Database table */\n\tdefine( 'DB_NAME', '" . $args['db_name'] . "' );";
+			$config .= "\n\t/** Database table */\n\tdefine( 'DB_HOST', '" . $args['db_host'] . "' );";
+			$config .= "\n\t/** Database table */\n\tdefine( 'DB_USER', '" . $args['db_user'] . "' );";
+			$config .= "\n\t/** Database table */\n\tdefine( 'DB_PASS', '" . $args['db_pass'] . "' );";
 
 			$config .= "\n\n\t/** Session salt */\n\tdefine( 'SESSION_SALT', '" . Crypter::DeepSalter(50) . "' );";
 			$config .= "\n\t/** Passowrd salt */\n\tdefine( 'PASSWORD_SALT', '" . Crypter::DeepSalter(50) . "' );";
 			$config .= "\n\t/** Nonce salt */\n\tdefine( 'NONCE_SALT', '" . Crypter::DeepSalter(50) . "' );";
 
-			$config .= "\n\n\t/** Debugging */\n\tdefine( 'INSTAPLANNER_DEBUG', false );";
+			$config .= "\n\n\t/** Debugging */\n\tdefine( 'RD_DEBUG', false );";
 
 			$config .= "\n";
 

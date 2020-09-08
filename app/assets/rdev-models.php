@@ -8,6 +8,9 @@
  * @link https://rdev.cc/
  */
 
+	use RapidDev\InstaPlanner\JSParse;
+	use RapidDev\InstaPlanner\Crypter;
+
 	/**
 	*
 	* Models
@@ -183,6 +186,20 @@
 		}
 
 		/**
+		* Exit
+		* Exit the script
+		*
+		* @access   protected
+		*/
+		protected function Exit()
+		{
+			$this->Master->Database->Close();
+			$this->Master->Session->Close();
+
+			exit;
+		}
+
+		/**
 		* BuildNonces
 		* Verification nonce for the site
 		*
@@ -238,7 +255,7 @@
 		protected function GetView()
 		{
 			require_once $this->themes . "pages/rdev-$this->name.php";
-			exit;
+			$this->Exit();
 		}
 
 		/**
@@ -420,9 +437,6 @@
 		public function Print()
 		{
 			$this->GetView();
-			$this->Master->Session->Close();
-			$this->Master->Database->Close();
-			//Kill script :(
-			exit;
+			$this->Exit();
 		}
 	}

@@ -8,6 +8,12 @@
  * @link https://rdev.cc/
  */
 	
+	use RapidDev\InstaPlanner\Uri as Path;
+	use RapidDev\InstaPlanner\Session;
+	use RapidDev\InstaPlanner\Options;
+	use RapidDev\InstaPlanner\User;
+	use RapidDev\InstaPlanner\Database;
+	
 	/**
 	*
 	* InstaPlanner
@@ -21,7 +27,7 @@
 		/**
 		 * Information about the address from the Uri class
 		 *
-		 * @var Uri
+		 * @var Path
 		 * @access public
 		 */
 		public $Path;
@@ -70,7 +76,7 @@
 			$this->Init();
 
 			//If the configuration file does not exist or is damaged, start the installation
-			if( !DEFINED( 'INSTAPLANNER_DB_NAME' ) )
+			if( !DEFINED( 'DB_HOST' ) )
 			{
 				$this->LoadModel( 'install', 'Installer' );
 			}
@@ -85,7 +91,7 @@
 						break;
 
 					default:
-						$this->LoadModel( 'home', 'Schedule your Instagram posts' );
+						$this->LoadModel( 'home', $this->Options->Get( 'site_description', 'Schedule your Instagram posts' ) );
 						break;
 				}
 			}
@@ -126,14 +132,14 @@
 
 		/**
 		* InitPath
-		* Initializes the Uri class
+		* Initializes the Path class
 		*
 		* @access   private
 		* @return   void
 		*/
 		private function InitPath() : void
 		{
-			$this->Path = new Uri();
+			$this->Path = new Path();
 			$this->Path->Parse();
 		}
 
@@ -160,7 +166,7 @@
 		private function InitDatabase() : void
 		{
 			if( $this->IsConfig() )
-				$this->Database = new Database( INSTAPLANNER_DB_HOST, INSTAPLANNER_DB_NAME, INSTAPLANNER_DB_USER, INSTAPLANNER_DB_PASS );
+				$this->Database = new Database( DB_HOST, DB_NAME, DB_USER, DB_PASS );
 			else
 				$this->Database = null;
 		}

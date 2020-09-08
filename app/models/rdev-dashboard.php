@@ -8,17 +8,18 @@
  * @link https://rdev.cc/
  */
 
+	use RapidDev\InstaPlanner\Models as Template;
+
 	/**
 	*
-	* Model [Install]
+	* Model [Dashboard]
 	*
 	* @author   Leszek Pomianowski <https://rdev.cc>
 	* @license	MIT License
 	* @access   public
 	*/
-	class Model extends Models
+	class Model extends Template
 	{
-
 		protected $accounts = array();
 		protected $current_account = array();
 
