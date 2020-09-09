@@ -31,11 +31,11 @@
 
 	require_once ASSPATH . 'rdev-user.php';
 
-	require_once ASSPATH . 'rdev-dashboard.php';
-
 	require_once ASSPATH . 'rdev-ajax.php';
 
 	/** System **/
 	require_once SYSPATH . 'ajax.php';
+
+	require_once SYSPATH . 'router.php';
 	
 	require_once SYSPATH . 'master.php';

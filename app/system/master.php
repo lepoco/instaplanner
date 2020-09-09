@@ -15,6 +15,8 @@
 	use RapidDev\InstaPlanner\Options;
 	use RapidDev\InstaPlanner\User;
 	use RapidDev\InstaPlanner\Database;
+
+	use RapidDev\InstaPlanner\Router;
 	
 	/**
 	*
@@ -89,11 +91,16 @@
 				{
 					case $this->Options->Get( 'dashboard', 'dashboard' ):
 					case $this->Options->Get( 'login', 'login' ):
-						new Dashboard( $this );
+						new Router( $this );
+						break;
+
+					case '':
+					case null:
+						$this->LoadModel( 'home', $this->Options->Get( 'site_description', 'Schedule your Instagram posts' ) );
 						break;
 
 					default:
-						$this->LoadModel( 'home', $this->Options->Get( 'site_description', 'Schedule your Instagram posts' ) );
+						$this->LoadModel( '404', $this->Options->Get( 'site_description', 'Schedule your Instagram posts' ) );
 						break;
 				}
 			}

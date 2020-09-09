@@ -287,4 +287,3 @@
 			$this->Finish( self::CODE_SUCCESS );
 		}
     }
-?>

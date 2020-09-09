@@ -37,18 +37,34 @@
 							<h2 class="display-4" style="font-size: 26px;">Main</h2>
 							<hr>
 							<div class="form-group">
-								<label for="site_url">Main website URL</label>
-								<input type="text" class="form-control" name="site_url" id="site_url" placeholder="<?php echo $this->Master->Options->Get('base_url'); ?>" value="<?php echo $this->Master->Options->Get('base_url'); ?>">
+								<label for="input_base_url">Main website URL</label>
+								<input type="text" class="form-control" name="input_base_url" id="input_base_url" placeholder="<?php echo $this->Master->Options->Get('base_url'); ?>" value="<?php echo $this->Master->Options->Get('base_url'); ?>">
 								<small><span class="uppercase"><strong>Attention!</strong></span><br/>Change URL only if you have moved the site to a different domain or folder. Otherwise, access to the panel may be blocked.</small>
 							</div>
+							<hr>
 							<div class="form-group">
-								<label for="dashboard_url">Dashboard URL</label>
-								<input type="text" class="form-control" name="dashboard_url" id="dashboard_url" placeholder="<?php echo $this->Master->Options->Get('dashboard'); ?>" value="<?php echo $this->Master->Options->Get('dashboard'); ?>">
+								<label for="input_dashboard_url">Dashboard path</label>
+								<input type="text" class="form-control" name="input_dashboard_url" id="input_dashboard_url" placeholder="<?php echo $this->Master->Options->Get('dashboard'); ?>" value="<?php echo $this->Master->Options->Get('dashboard'); ?>">
 							</div>
 							<div class="form-group">
-								<label for="input_login_url">Login URL</label>
+								<label for="input_login_url">Login path</label>
 								<input type="text" class="form-control" name="input_login_url" id="input_login_url" placeholder="<?php echo $this->Master->Options->Get('login'); ?>" value="<?php echo $this->Master->Options->Get('login'); ?>">
 							</div>
+							<small><span class="uppercase">The paths are responsible for the login address and the administration panel. If you change them, you will change the default addresses.</small>
+							<hr>
+							<div class="form-group">
+								<label for="input_media_path">Media library</label>
+								<input type="text" class="form-control" name="input_media_library" id="input_media_library" placeholder="<?php echo $this->Master->Options->Get('media_library'); ?>" value="<?php echo $this->Master->Options->Get('media_library'); ?>">
+							</div>
+							<div class="form-group">
+								<label for="input_posts_path">Posts library</label>
+								<input type="text" class="form-control" name="input_posts_library" id="input_posts_library" placeholder="<?php echo $this->Master->Options->Get('posts_library'); ?>" value="<?php echo $this->Master->Options->Get('posts_library'); ?>">
+							</div>
+							<div class="form-group">
+								<label for="input_profile_path">Profile pictures library</label>
+								<input type="text" class="form-control" name="input_profile_library" id="input_profile_library" placeholder="<?php echo $this->Master->Options->Get('profile_library'); ?>" value="<?php echo $this->Master->Options->Get('profile_library'); ?>">
+							</div>
+							<small><span class="uppercase">These directories store photos and uploaded pictures. Changing these addresses will not move the files. You have to move the files to the new folders manually.</small>
 						</div>
 
 						<div class="tab-pane fade show <?php echo ($active == 'accounts' ? ' active' : ''); ?>" id="v-pills-accounts" role="tabpanel" aria-labelledby="v-pills-accounts-tab">
@@ -119,7 +135,7 @@
 				</div>
 				<div class="col-12 col-lg-4">
 					<hr>
-					<button id="save-settings" type="submit" class="btn btn-block btn-outline-dark">Save settings</button>
+					<button id="update-settings" type="submit" class="btn btn-block btn-outline-dark">Update settings</button>
 				</div>
 			</div>
 		</div>
