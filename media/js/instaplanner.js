@@ -613,12 +613,19 @@
 			let profile_url = 'https://www.instagram.com/' + jQuery('#input-account-name').val() + '/?__a=1';
 
 			jQuery('#instaplaner__addaccount--fetch').attr('disabled', 'disabled');
+			jQuery('#instaplaner__addaccount--save').attr('disabled', 'disabled');
 
 			if (jQuery('#instaplaner__addaccount--form').is(':visible'))
 				jQuery('#instaplaner__addaccount--form').slideToggle();
 
 			if (jQuery('.instaplaner__addaccount--alert__fetch').is(':hidden'))
 				jQuery('.instaplaner__addaccount--alert__fetch').slideToggle();
+
+			if (jQuery('.instaplaner__addaccount--alert__exists').is(':visible'))
+				jQuery('.instaplaner__addaccount--alert__exists').slideToggle();
+
+			if (jQuery('.instaplaner__addaccount--alert__error').is(':visible'))
+				jQuery('.instaplaner__addaccount--alert__error').slideToggle();
 
 			$.getJSON( profile_url, function( insta_data )
 			{
@@ -695,6 +702,9 @@
 			if (jQuery('.instaplaner__addaccount--alert__exists').is(':visible'))
 				jQuery('.instaplaner__addaccount--alert__exists').hide();
 
+			if (jQuery('.instaplaner__addaccount--alert__error').is(':visible'))
+				jQuery('.instaplaner__addaccount--alert__error').hide();
+
 			if( profile_data.hasOwnProperty('name') )
 			{
 				profile_data.nonce = page_data.register_account_nonce;
@@ -719,11 +729,13 @@
 						}
 						else if( e == 's01')
 						{
-							//success
+							jQuery('#instaplaner__addaccount').modal('hide');
+							location.reload();
 						}
 						else
 						{
-							//something went wrong
+							if (jQuery('.instaplaner__addaccount--alert__error').is(':hidden'))
+								jQuery('.instaplaner__addaccount--alert__error').slideToggle();
 						}
 						console.log(e);
 					},
