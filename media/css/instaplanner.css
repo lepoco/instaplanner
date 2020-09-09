@@ -434,15 +434,15 @@
 		color: rgb(38, 38, 38);
 	}
 
+	.instaplanner__center--modal .modal-content,
 	.instaplaner__addphoto .modal-content,
-	.instaplaner__editphoto .modal-content,
-	.instaplaner__addaccount .modal-content {
+	.instaplaner__editphoto .modal-content {
 		border: 0 !important;
 	}
 
+	.instaplanner__center--modal .modal-dialog,
 	.instaplaner__addphoto .modal-dialog,
-	.instaplaner__editphoto .modal-dialog,
-	.instaplaner__addaccount .modal-dialog {
+	.instaplaner__editphoto .modal-dialog {
 		min-height: calc(100vh - 60px);
 		display: flex;
 		flex-direction: column;
@@ -450,31 +450,31 @@
 		overflow: auto;
 	}
 	@media(max-width: 768px) {
+		.instaplanner__center--modal .modal-dialog,
 		.instaplaner__addphoto .modal-dialog,
-		.instaplaner__editphoto .modal-dialog,
-		.instaplaner__addaccount .modal-dialog {
+		.instaplaner__editphoto .modal-dialog {
 			min-height: calc(100vh - 20px);
 		}
 	}
 
+	.instaplanner__center--modal .btn-group-vertical > .btn,
 	.instaplaner__addphoto .btn-group-vertical > .btn,
-	.instaplaner__editphoto .btn-group-vertical > .btn,
-	.instaplaner__addaccount .btn-group-vertical > .btn {
+	.instaplaner__editphoto .btn-group-vertical > .btn {
 		border: 0;
 		border-top: 1px solid #dbdbdb;
 		border-top: 1px solid rgba(var(--b6a,219,219,219),1);
 	}
 
+	.instaplanner__center--modal .btn-group-vertical > .btn > span,
 	.instaplaner__addphoto .btn-group-vertical > .btn > span,
-	.instaplaner__editphoto .btn-group-vertical > .btn > span,
-	.instaplaner__addaccount .btn-group-vertical > .btn > span {
+	.instaplaner__editphoto .btn-group-vertical > .btn > span {
 		color: #ed4956;
 		color: rgba(var(--i30,237,73,86),1);
 	}
 
+	.instaplanner__center--modal .btn-group-vertical > .btn:not(:last-child),
 	.instaplaner__addphoto .btn-group-vertical > .btn:not(:last-child),
-	.instaplaner__editphoto .btn-group-vertical > .btn:not(:last-child),
-	.instaplaner__addaccount .btn-group-vertical > .btn:not(:last-child) {
+	.instaplaner__editphoto .btn-group-vertical > .btn:not(:last-child) {
 		border-radius: 0 !important;
 	}
 	

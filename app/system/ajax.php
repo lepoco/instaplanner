@@ -87,12 +87,27 @@
 				$filename = strtolower( Crypter::BaseSalter(30) ) . '.jpeg';
 
 			$query = $this->Master->Database->query(
-				"SELECT id FROM rdev_accounts WHERE name = ?",
+				"SELECT id FROM rdev_accounts WHERE name = ? AND active = true",
 				strtolower( filter_var( $_POST[ 'name' ], FILTER_SANITIZE_STRING ) )
 			)->fetchAll();
 
 			if( !empty( $query ) )
 				$this->Finish( self::ERROR_ENTRY_EXISTS );
+
+			$query = $this->Master->Database->query(
+				"SELECT id FROM rdev_accounts WHERE name = ? AND active = false",
+				strtolower( filter_var( $_POST[ 'name' ], FILTER_SANITIZE_STRING ) )
+			)->fetchArray();
+
+			if( !empty( $query ) )
+			{
+				$update = $this->Master->Database->query(
+					"UPDATE rdev_accounts SET active = true WHERE id = ?",
+					$query[ 'id' ]
+				);
+
+				$this->Finish( self::CODE_SUCCESS );
+			}
 
 			if( !$this->ForceFilePutContents( ABSPATH . $media_library . $filename, fopen( $_POST[ 'avatar' ], 'r' ) ) )
 				$this->Finish( self::ERROR_SAVING_FILE );
@@ -115,6 +130,40 @@
 				$this->Master->User->CurrentID()
 			);
 			
+			$this->Finish( self::CODE_SUCCESS );
+		}
+
+		
+		/**
+		* delete_account
+		* Set the account value to inactive in the database
+		*
+		* @access   protected
+		* @return	void
+		*/
+		protected function delete_account() : void
+		{
+			if( !$this->Master->User->IsManager() )
+				$this->Finish( self::ERROR_INSUFFICIENT_PERMISSIONS );
+
+			if( !isset(
+				$_POST[ 'id' ]
+			) )
+				$this->Finish( self::ERROR_MISSING_ARGUMENTS );
+
+			$query = $this->Master->Database->query(
+				"SELECT name FROM rdev_accounts WHERE id = ?",
+				strtolower( filter_var( $_POST[ 'id' ], FILTER_SANITIZE_NUMBER_INT ) )
+			)->fetchAll();
+
+			if( empty( $query ) )
+				$this->Finish( self::ERROR_ENTRY_DONT_EXISTS );
+
+			$query = $this->Master->Database->query(
+				"UPDATE rdev_accounts SET active = false WHERE id = ?",
+				filter_var( $_POST[ 'id' ], FILTER_SANITIZE_NUMBER_INT )
+			);
+
 			$this->Finish( self::CODE_SUCCESS );
 		}
 

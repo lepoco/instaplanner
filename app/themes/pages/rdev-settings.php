@@ -89,8 +89,8 @@
 										</p>
 										<strong>Followers: </strong> <?php echo $account['followers']; ?> <strong>Following: </strong> <?php echo $account['following']; ?> <strong>Posts: </strong> <?php echo $account['posts']; ?>
 										<div style="display: flex;width: 100%;margin-top:8px">
-											<button class="instaplaner__account--href" href="#account_update">Update</button>
-											<button class="instaplaner__account--href" href="#account_delete"><span>Delete</span></button>
+											<button class="instaplaner__account--href" data-id="<?php echo $account['id']; ?>" href="#account_update">Update</button>
+											<button class="instaplaner__account--href instaplaner__account--delete" data-id="<?php echo $account['id']; ?>" href="#account_delete"><span>Delete</span></button>
 										</div>
 									</div>
 								</div>
@@ -143,7 +143,21 @@
 				</div>
 			</div>
 		</div>
-		<div class="modal fade instaplaner__addaccount" id="instaplaner__addaccount" data-keyboard="false" tabindex="-1" aria-labelledby="instaplaner__addaccount--label" aria-hidden="true">
+		<div class="modal fade instaplanner__center--modal instaplaner__deleteaccount" id="instaplaner__deleteaccount" data-keyboard="false" tabindex="-1" aria-labelledby="instaplaner__deleteaccount--label" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<strong>Look out!</strong>
+						<p>Are you sure you want to delete this account?</p>
+					</div>
+					<div class="btn-group-vertical">
+						<button id="instaplaner__deleteaccount--confirm" type="button" class="btn btn-outline-dark"><span>Delete</span></button>
+						<button type="button" class="btn btn-outline-dark" data-dismiss="modal"><span>Cancel</span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade instaplanner__center--modal instaplaner__addaccount" id="instaplaner__addaccount" data-keyboard="false" tabindex="-1" aria-labelledby="instaplaner__addaccount--label" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
@@ -162,7 +176,7 @@
 						<div class="alert alert-danger instaplaner__addaccount--alert instaplaner__addaccount--alert__error" style="display: none">
 								<svg width="22px" height="22px" viewBox="0 0 16 16" class="bi bi-people" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.482 1.482 0 0 1 0-2.098L6.95.435zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z"/>
-  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+									<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
 								</svg>
 								<div>Something went wrong...</div>
 						</div>

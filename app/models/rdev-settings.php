@@ -33,6 +33,7 @@
 
 			$this->AddPageData( 'register_new_account', $add_account );
 			$this->AddPageData( 'register_account_nonce', $this->AjaxNonce( 'register_account' ) );
+			$this->AddPageData( 'delete_account_nonce', $this->AjaxNonce( 'delete_account' ) );
 		}
 		/**
 		* GetAccounts
@@ -42,7 +43,7 @@
 		*/
 		protected function GetAccounts()
 		{
-			$query = $this->Master->Database->query( "SELECT * FROM rdev_accounts" )->fetchAll();
+			$query = $this->Master->Database->query( "SELECT * FROM rdev_accounts WHERE active = true" )->fetchAll();
 
 			if( !empty( $query ) )
 				return $query;

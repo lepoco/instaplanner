@@ -752,6 +752,37 @@
 			console.log(profile_data);
 		});
 
+		jQuery('.instaplaner__account--delete').on('click', function (e) {
+			e.preventDefault();
+			jQuery('#instaplaner__deleteaccount--confirm').attr( 'data-id', jQuery(this).data('id') );
+			jQuery('#instaplaner__deleteaccount').modal( 'show' );
+		});
+
+		jQuery('#instaplaner__deleteaccount--confirm').on('click', function (e) {
+			e.preventDefault();
+
+			let account_id = jQuery(this).data('id');
+
+			jQuery.ajax({
+				url: page_data.ajax,
+				type: 'post',
+				data: {
+					action: 'delete_account',
+					nonce: page_data.delete_account_nonce,
+					id: account_id
+				},
+				success: function (e)
+				{
+					console.log(e);
+					location.reload();
+				},
+				fail: function (xhr, textStatus, errorThrown)
+				{
+					//no mamy problem
+				}
+			});
+		});
+
 		jQuery('#save-settings').on('click', function(e)
 		{
 			e.preventDefault();

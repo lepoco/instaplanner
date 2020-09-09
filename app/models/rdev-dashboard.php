@@ -31,6 +31,8 @@
 			$this->AddPageData( 'order_nonce', $this->AjaxNonce( 'save_reorder' ) );
 			$this->AddPageData( 'delete_nonce', $this->AjaxNonce( 'delete_post' ) );
 			$this->AddPageData( 'update_nonce', $this->AjaxNonce( 'update_post' ) );
+
+			$this->current_account = $this->CurrentAccount();
 			$this->FetchPosts();
 		}
 
@@ -38,7 +40,7 @@
 		{
 			$media_library = $this->Master->Options->Get( 'posts_library', 'media/img/posts/' );
 			
-			$query = $this->Master->Database->query( "SELECT * FROM rdev_accounts WHERE id = 1" )->fetchArray();
+			$query = $this->Master->Database->query( "SELECT * FROM rdev_accounts WHERE id = ?", $this->CurrentAccount( 'id' ) )->fetchArray();
 			$order = json_decode( $this->CurrentAccount( 'post_order' ), true );
 
 			if( $order == '' )
@@ -83,7 +85,7 @@
 		{
 			if( empty( $this->accounts ) )
 			{
-				$this->accounts = $this->Master->Database->query( "SELECT * FROM rdev_accounts" )->fetchAll();
+				$this->accounts = $this->Master->Database->query( "SELECT * FROM rdev_accounts WHERE active = true" )->fetchAll();
 			}
 
 			if( !empty( $this->accounts ) )
