@@ -602,14 +602,23 @@
 	{
 		let profile_data = {};
 
-		if( add_new_account )
+		if (page_data.register_new_account )
 			jQuery('#instaplaner__addaccount').modal('show');
 
 		function insta_profile()
 		{
+			if (jQuery('#input-account-name').val() == '')
+				return;
+
 			let profile_url = 'https://www.instagram.com/' + jQuery('#input-account-name').val() + '/?__a=1';
 
 			jQuery('#instaplaner__addaccount--fetch').attr('disabled', 'disabled');
+
+			if (jQuery('#instaplaner__addaccount--form').is(':visible'))
+				jQuery('#instaplaner__addaccount--form').slideToggle();
+
+			if (jQuery('.instaplaner__addaccount--alert__fetch').is(':hidden'))
+				jQuery('.instaplaner__addaccount--alert__fetch').slideToggle();
 
 			$.getJSON( profile_url, function( insta_data )
 			{
@@ -637,20 +646,31 @@
 						jQuery('#instaplaner__addaccount--following').html( insta_data.graphql.user.edge_follow.count );
 						jQuery('#instaplaner__addaccount--posts').html( insta_data.graphql.user.edge_owner_to_timeline_media.count );
 
-						jQuery('.instaplaner__addaccount--preview').slideToggle();
-						jQuery('#instaplaner__addaccount--save').removeAttr('disabled');
+
+						window.setTimeout(function ()
+						{
+
+							if (jQuery('.instaplaner__addaccount--alert__fetch').is(':visible'))
+								jQuery('.instaplaner__addaccount--alert__fetch').slideToggle();
+
+							if (jQuery('#instaplaner__addaccount--form').is(':hidden'))
+								jQuery('#instaplaner__addaccount--form').slideToggle();
+
+							if (jQuery('.instaplaner__addaccount--preview').is(':hidden'))
+								jQuery('.instaplaner__addaccount--preview').slideToggle();
+
+							jQuery('#instaplaner__addaccount--fetch').removeAttr('disabled');
+							jQuery('#instaplaner__addaccount--save').removeAttr('disabled');
+						}, 1000);
+
+						
 						
 						console.log( insta_data );
 					}
 				}
 			});
 
-			//https://www.instagram.com/themakatka/?__a=1
-
-			
-			console.log( jQuery('#input-account-name').val() );
-
-			//https://www.instagram.com/themakatka/?__a=1
+			//https://www.instagram.com/4geekco/?__a=1
 		}
 
 		jQuery('#instaplaner__addaccount--form').on('submit', function(e)
@@ -670,12 +690,17 @@
 		{
 			e.preventDefault();
 
+			jQuery('#instaplaner__addaccount--save').attr('disabled', 'disabled');
+
+			if (jQuery('.instaplaner__addaccount--alert__exists').is(':visible'))
+				jQuery('.instaplaner__addaccount--alert__exists').hide();
+
 			if( profile_data.hasOwnProperty('name') )
 			{
-				profile_data.nonce = register_account_nonce;
+				profile_data.nonce = page_data.register_account_nonce;
 				profile_data.action = 'register_account';
 
-				console.log(profile_data);
+				//console.log(profile_data);
 				
 				jQuery.ajax({
 					url: page_data.ajax,
@@ -683,6 +708,23 @@
 					data: profile_data,
 					success: function(e)
 					{
+						jQuery('#instaplaner__addaccount--save').removeAttr('disabled');
+
+						if( e == 'e08')
+						{
+							//account exists
+							if (jQuery('.instaplaner__addaccount--alert__exists').is(':hidden'))
+								jQuery('.instaplaner__addaccount--alert__exists').slideToggle();
+							
+						}
+						else if( e == 's01')
+						{
+							//success
+						}
+						else
+						{
+							//something went wrong
+						}
 						console.log(e);
 					},
 					fail:function(xhr, textStatus, errorThrown)

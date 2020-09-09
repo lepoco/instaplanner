@@ -88,6 +88,10 @@
 											<a target="_blank" rel="noopener" href="https://instagram.com/<?php echo $account['name']; ?>">https://instagram.com/<?php echo $account['name']; ?></a>
 										</p>
 										<strong>Followers: </strong> <?php echo $account['followers']; ?> <strong>Following: </strong> <?php echo $account['following']; ?> <strong>Posts: </strong> <?php echo $account['posts']; ?>
+										<div style="display: flex;width: 100%;margin-top:8px">
+											<button class="instaplaner__account--href" href="#account_update">Update</button>
+											<button class="instaplaner__account--href" href="#account_delete"><span>Delete</span></button>
+										</div>
 									</div>
 								</div>
 <?php endforeach; else: ?>
@@ -143,6 +147,18 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
+						<div class="alert instaplaner__addaccount--alert instaplaner__addaccount--alert__fetch" style="display: none">
+								<div class="spinner-border" role="status">
+									<span class="sr-only">Loading...</span>
+								</div>
+								<div>Downloading data from the Instagram...</div>
+						</div>
+						<div class="alert alert-danger instaplaner__addaccount--alert instaplaner__addaccount--alert__exists" style="display: none">
+								<svg width="22px" height="22px" viewBox="0 0 16 16" class="bi bi-people" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+								</svg>
+								<div>An account with the given name already exists</div>
+						</div>
 						<form id="instaplaner__addaccount--form">
 							<input type="hidden" value="<?php echo $this->AjaxNonce( 'add_post' ); ?>" name="nonce" id="addphoto_nonce">
 							<input type="hidden" value="add_post" name="action" id="addphoto_action">

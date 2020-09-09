@@ -22,6 +22,18 @@
 	*/
 	class Model extends Template
 	{
+
+		protected function Init()
+		{
+			$add_account = false;
+			if( isset($_GET['add_account']))
+			{
+				$add_account = true;
+			}
+
+			$this->AddPageData( 'register_new_account', $add_account );
+			$this->AddPageData( 'register_account_nonce', $this->AjaxNonce( 'register_account' ) );
+		}
 		/**
 		* GetAccounts
 		* Get all instagram accounts
@@ -36,15 +48,5 @@
 				return $query;
 			else
 				return array();
-		}
-
-		protected function Header()
-		{	
-			$add_account = false;
-			if( isset($_GET['add_account']))
-			{
-				$add_account = true;
-			}
-			echo '<script>let register_account_nonce = \'' . $this->AjaxNonce( 'register_account' ) . '\';let add_new_account = ' . ($add_account ? 'true' : 'false') . ';</script>';
 		}
 	}

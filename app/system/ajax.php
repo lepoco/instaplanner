@@ -84,18 +84,22 @@
 			$media_library = $this->Master->Options->Get( 'profile_library', 'media/img/avatars/' );
 
 			while ( is_file( ABSPATH . $media_library . $filename ) )
-			{
 				$filename = strtolower( Crypter::BaseSalter(30) ) . '.jpeg';
-			}
+
+			$query = $this->Master->Database->query(
+				"SELECT id FROM rdev_accounts WHERE name = ?",
+				strtolower( filter_var( $_POST[ 'name' ], FILTER_SANITIZE_STRING ) )
+			)->fetchAll();
+
+			if( !empty( $query ) )
+				$this->Finish( self::ERROR_ENTRY_EXISTS );
 
 			if( !$this->ForceFilePutContents( ABSPATH . $media_library . $filename, fopen( $_POST[ 'avatar' ], 'r' ) ) )
-			{
 				$this->Finish( self::ERROR_SAVING_FILE );
-			}
 
 			$query = $this->Master->Database->query(
 				"INSERT INTO rdev_accounts (name, full_name, avatar, website, posts, followers, following, description) VALUES (?,?,?,?,?,?,?,?)",
-				filter_var( $_POST[ 'name' ], FILTER_SANITIZE_STRING ),
+				strtolower( filter_var( $_POST[ 'name' ], FILTER_SANITIZE_STRING ) ),
 				filter_var( $_POST[ 'full_name' ], FILTER_SANITIZE_STRING ),
 				$filename, //image
 				filter_var( $_POST[ 'url' ], FILTER_SANITIZE_STRING ),

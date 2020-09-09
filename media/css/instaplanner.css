@@ -216,7 +216,8 @@
 		display: none;
 	}
 
-	.instaplaner__profile__description--href {
+	.instaplaner__profile__description--href,
+	.instaplaner__account--href {
 		display: block;
 		font-weight: 600;
 		text-decoration: none;
@@ -232,11 +233,24 @@
 		color: #262626;
 		color: rgba(var(--f75,38,38,38),1);
 		width: 100%;
-		margin-left: 15px;
 		height: 25px;
-		max-width: 100px;
 		border-radius: 4px;
 		line-height: 23px;
+	}
+
+	.instaplaner__profile__description--href {
+		margin-left: 15px;
+		max-width: 100px;
+	}
+
+	.instaplaner__account--href {
+		margin-right: 10px;
+		max-width: 80px;
+	}
+
+	.instaplaner__account--href > span {
+		color: #ed4956;
+		color: rgba(var(--i30,237,73,86),1);
 	}
 
 	.instaplaner__profile__description--href:hover {
@@ -462,6 +476,21 @@
 	.instaplaner__editphoto .btn-group-vertical > .btn:not(:last-child),
 	.instaplaner__addaccount .btn-group-vertical > .btn:not(:last-child) {
 		border-radius: 0 !important;
+	}
+	
+	.instaplaner__addaccount--alert {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.instaplaner__addaccount--alert__fetch {
+		color: #8e8e8e;
+	}
+
+	.instaplaner__addaccount--alert .spinner-border,
+	.instaplaner__addaccount--alert svg {
+		margin-right: 15px;
 	}
 
 	.instaplaner__editphoto img {
