@@ -32,7 +32,7 @@
 			$this->AddPageData( 'delete_nonce', $this->AjaxNonce( 'delete_post' ) );
 			$this->AddPageData( 'update_nonce', $this->AjaxNonce( 'update_post' ) );
 
-			$this->current_account = $this->CurrentAccount();
+			$this->CurrentAccount();
 			$this->FetchPosts();
 		}
 
@@ -107,6 +107,11 @@
 						$this->current_account = $account;
 						break;
 					}
+				}
+
+				if( empty( $this->current_account ) )
+				{
+					$this->current_account = $accounts[0];
 				}
 			}
 
