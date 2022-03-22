@@ -23,7 +23,7 @@
   ],
   "short_name": "InstaPlanner",
   "name": "InstaPlanner",
-  "description": "Planning posts for Instagram.",
+  "description": "Manage, organize and schedule your Instagram posts.",
   "default_locale": "en",
   "lang": "en-US",
   "start_url": "/",

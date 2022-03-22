@@ -10,7 +10,8 @@
     "planner"
   ],
   "require": {
-    "php": "^8.0|^8.1"
+    "php": "^8.0|^8.1",
+    "grpc/grpc": "^1.42"
   },
   "require-dev": {
     "symfony/var-dumper": "^6.0"

@@ -13,7 +13,7 @@ jobs:
     if: contains(github.event.head_commit.message, 'ci skip') == false
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@latest
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -29,14 +29,14 @@ jobs:
       run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
     - name: Cache dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@latest
       with:
         path: ${{ steps.composer-cache.outputs.dir }}
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
         restore-keys: ${{ runner.os }}-composer-
 
     - name: Use Node.js
-      uses: actions/setup-node@3
+      uses: actions/setup-node@latest
 
     - name: Build
       run: |
