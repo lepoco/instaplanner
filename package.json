@@ -1,6 +1,8 @@
 {
   "name": "lepo-instaplanner",
   "version": "1.0.0",
+  "license": "GPL-3.0",
+  "repository": "https://github.com/lepoco/instaplanner",
   "private": true,
   "devDependencies": {
     "@fluentui/react-icons": "^2.0.153-canary.0",

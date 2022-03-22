@@ -5,8 +5,8 @@
  * All Rights Reserved.
  */
 
-import { Suspense } from 'react';
 import ReactDOM from 'react-dom';
+import { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Layout from './components/Layout';
@@ -17,7 +17,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import './styles/app.scss';
 
 const baseUrl: string =
-  document.getElementsByTagName('base')[0].getAttribute('href') ?? '';
+  document.getElementsByTagName('base')[0]?.getAttribute('href') ?? '';
 
 ReactDOM.render(
   <BrowserRouter basename={baseUrl}>
@@ -33,4 +33,4 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-serviceWorkerRegistration.register();
+serviceWorkerRegistration.unregister();

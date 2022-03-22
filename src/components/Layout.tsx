@@ -20,7 +20,7 @@ class Layout extends RoutedPureComponent<ILayoutState> {
   }
 
   public render(): JSX.Element {
-    return <></>;
+    return <>Hello World</>;
   }
 }
 

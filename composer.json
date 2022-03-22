@@ -3,7 +3,7 @@
   "type": "project",
   "description": "Planner for Instagram",
   "homepage": "https://github.com/lepoco/instaplanner",
-  "license": "GNU-3.0",
+  "license": "GPL-3.0",
   "keywords": [
     "instagram",
     "react",
