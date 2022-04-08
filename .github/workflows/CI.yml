@@ -48,7 +48,7 @@ jobs:
       run: zip instaplanner-build.zip ./* -r
 
     - name: 'Archive results'
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: instaplanner-build
         path: instaplanner-build.zip
